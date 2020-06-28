@@ -2,29 +2,33 @@ import tkinter
 from tkinter import *
 
 
+
 window = tkinter.Tk()
 window.geometry("350x430")
+#window.configure(bg="#494949")
 
-display = Entry( window, width=32,fg="#494949",bg="white",font=("Calibri",16 ))
-display.grid(ipady=50,padx=0,pady=0,columnspan=4,rowspan=1)
+display = Entry( window, width=31,fg="#494949",bg="white",font=("Calibri",16 ),justify=RIGHT)
+display.grid(ipady=55,padx=0,pady=0,columnspan=4,rowspan=1)
+
 
 
 Clear = Button(window, text="C", width=11, height=3,bg="#494949",fg="white")
 Clear.grid(row=1,column=0,sticky="W")
 
-plusminus = Button(window, text="C", width=11, height=3,bg="#494949",fg="white")
+plusminus = Button(window, text="π", width=11, height=3,bg="#494949",fg="white")
 plusminus.grid(row=1,column=1,padx=0)
 
-percentage = Button(window, text="%", width=11, height=3,bg="#494949",fg="white")
+percentage = Button(window, text="+/-", width=11, height=3,bg="#494949",fg="white")
 percentage.grid(row=1,column=2,padx=0)
 
-division = Button(window, text="%", width=11, height=3)
+division = Button(window, text="/", width=11, height=3,bg="#5E4BB6")
 division.grid(row=1,column=3,padx=0)
 
 #------------------------------------------------------------------------
 
 seven = Button(window, text="7", width=11, height=3,bg="#494949",fg="white")
 seven.grid(row=2,column=0,sticky="W")
+seven.grid_propagate(False)
 
 eight = Button(window, text="8", width=11, height=3,bg="#494949",fg="white")
 eight.grid(row=2,column=1,padx=0)
@@ -32,7 +36,7 @@ eight.grid(row=2,column=1,padx=0)
 nine = Button(window, text="9", width=11, height=3,bg="#494949",fg="white")
 nine.grid(row=2,column=2,padx=0)
 
-multi = Button(window, text="X", width=11, height=3)
+multi = Button(window, text="X", width=11, height=3,bg="#5E4BB6")
 multi.grid(row=2,column=3,padx=0)
 
 #------------------------------------------------------------------------
@@ -46,7 +50,7 @@ five.grid(row=3,column=1,padx=0)
 six = Button(window, text="6", width=11, height=3,bg="#494949",fg="white")
 six.grid(row=3,column=2,padx=0)
 
-minus = Button(window, text="-", width=11, height=3)
+minus = Button(window, text="-", width=11, height=3,bg="#5E4BB6")
 minus.grid(row=3,column=3,padx=0)
 
 #--------------------------------------------------------------------------
@@ -60,7 +64,7 @@ two.grid(row=4,column=1,padx=0)
 three = Button(window, text="3", width=11, height=3,bg="#494949",fg="white")
 three.grid(row=4,column=2,padx=0)
 
-plus = Button(window, text="+", width=11, height=3)
+plus = Button(window, text="+", width=11, height=3,bg="#5E4BB6")
 plus.grid(row=4,column=3,padx=0)
 
 #--------------------------------------------------------------------------
@@ -74,7 +78,7 @@ dot.grid(row=5,column=1,padx=0)
 delete = Button(window, text="del", width=11, height=3,bg="#494949",fg="white")
 delete.grid(row=5,column=2,padx=0)
 
-equals = Button(window, text="=", width=11, height=3)
+equals = Button(window, text="=", width=11, height=3,bg="#FEC208")
 equals.grid(row=5,column=3,padx=0)
 
 
