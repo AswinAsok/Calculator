@@ -69,7 +69,7 @@ def equals_function():
 class Calculator():
 
     def __init__(self, window):
-        window.geometry("350x420")
+        window.geometry("345x412")
         window.title("The Hilarious Calculator")
         global var
         var = StringVar()
@@ -77,80 +77,81 @@ class Calculator():
         display = Label(window, width=31, fg="#494949", textvariable=var, bg="white", font=("Calibri", 16), anchor="e")
         display.grid(ipady=55, padx=0, pady=0, columnspan=4, rowspan=1)
 
-        Clear = Button(window, text="C", width=11, height=3, bg="#494949", fg="white", command=clear)
-        Clear.grid(row=1, column=0, sticky="W")
+        Clear = Button(window, text="C", width=11, height=3, bg="#494949", fg="white",border=0, relief = GROOVE ,command=clear)
+        Clear.grid(row=1, column=0, sticky="W",pady=1,padx=0)
 
-        plusminus = Button(window, text="π", width=11, height=3, bg="#494949", fg="white")
-        plusminus.grid(row=1, column=1, padx=0)
+        pi = Button(window, text="π", width=11, height=3, bg="#494949", fg="white",border=0,relief = GROOVE)
+        pi.grid(row=1, column=1)
 
-        percentage = Button(window, text="+/-", width=11, height=3, bg="#494949", fg="white")
-        percentage.grid(row=1, column=2, padx=0)
+        plusminus = Button(window, text="+/-", width=11, height=3, bg="#494949", fg="white",border=0,relief = GROOVE)
+        plusminus.grid(row=1, column=2)
 
-        division = Button(window, text="/", width=11, height=3, bg="#5E4BB6", fg="white",
+        division = Button(window, text="/", width=11, height=3, bg="#5E4BB6", fg="white",border=0,
                           command=lambda: operation("/"))
-        division.grid(row=1, column=3, padx=0)
+        division.grid(row=1, column=3)
 
         # ------------------------------------------------------------------------
 
-        seven = Button(window, text="7", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("7"))
-        seven.grid(row=2, column=0, sticky="W")
+        seven = Button(window, text="7", width=11, height=3, bg="#494949", fg="white",border=0,command=lambda: set_text("7"))
+        seven.grid(row=2, column=0, sticky="W",pady=1)
         seven.grid_propagate(False)
 
-        eight = Button(window, text="8", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("8"))
-        eight.grid(row=2, column=1, padx=0)
+        eight = Button(window, text="8", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("8"))
+        eight.grid(row=2, column=1)
 
-        nine = Button(window, text="9", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("9"))
-        nine.grid(row=2, column=2, padx=0)
+        nine = Button(window, text="9", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("9"))
+        nine.grid(row=2, column=2)
 
-        multi = Button(window, text="X", width=11, height=3, bg="#5E4BB6", fg="white", command=lambda: operation("*"))
-        multi.grid(row=2, column=3, padx=0)
+        multi = Button(window, text="X", width=11, height=3, bg="#5E4BB6", fg="white",border=0, command=lambda: operation("*"))
+        multi.grid(row=2, column=3)
 
         # ------------------------------------------------------------------------
 
-        four = Button(window, text="4", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("4"))
-        four.grid(row=3, column=0, sticky="W")
+        four = Button(window, text="4", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("4"))
+        four.grid(row=3, column=0, sticky="W",pady=1)
 
-        five = Button(window, text="5", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("5"))
-        five.grid(row=3, column=1, padx=0)
+        five = Button(window, text="5", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("5"))
+        five.grid(row=3, column=1)
 
-        six = Button(window, text="6", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("6"))
-        six.grid(row=3, column=2, padx=0)
+        six = Button(window, text="6", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("6"))
+        six.grid(row=3, column=2)
 
-        minus = Button(window, text="-", width=11, height=3, bg="#5E4BB6", fg="white", command=lambda: operation("-"))
-        minus.grid(row=3, column=3, padx=0)
-
-        # --------------------------------------------------------------------------
-
-        one = Button(window, text="1", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("1"))
-        one.grid(row=4, column=0, sticky="W")
-
-        two = Button(window, text="2", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("2"))
-        two.grid(row=4, column=1, padx=0)
-
-        three = Button(window, text="3", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("3"))
-        three.grid(row=4, column=2, padx=0)
-
-        plus = Button(window, text="+", width=11, height=3, bg="#5E4BB6", fg="white", command=lambda: operation("+"))
-        plus.grid(row=4, column=3, padx=0)
+        minus = Button(window, text="-", width=11, height=3, bg="#5E4BB6", fg="white",border=0, command=lambda: operation("-"))
+        minus.grid(row=3, column=3)
 
         # --------------------------------------------------------------------------
 
-        zero = Button(window, text="0", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("0"))
-        zero.grid(row=5, column=0, sticky="W")
+        one = Button(window, text="1", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("1"))
+        one.grid(row=4, column=0, sticky="W",pady=1)
 
-        dot = Button(window, text=".", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("."))
-        dot.grid(row=5, column=1, padx=0)
+        two = Button(window, text="2", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("2"))
+        two.grid(row=4, column=1)
+
+        three = Button(window, text="3", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("3"))
+        three.grid(row=4, column=2)
+
+        plus = Button(window, text="+", width=11, height=3, bg="#5E4BB6", fg="white",border=0, command=lambda: operation("+"))
+        plus.grid(row=4, column=3)
+
+        # --------------------------------------------------------------------------
+
+        zero = Button(window, text="0", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("0"))
+        zero.grid(row=5, column=0, sticky="W",pady=1)
+
+        dot = Button(window, text=".", width=11, height=3, bg="#494949", fg="white",border=0, command=lambda: set_text("."))
+        dot.grid(row=5, column=1)
 
         global delete
-        delete = Button(window, text="del", width=11, height=3, bg="#494949", fg="white",
+        delete = Button(window, text="del", width=11, height=3, bg="#494949",border=0, fg="white",
                         command=lambda: del_function())
-        delete.grid(row=5, column=2, padx=0)
+        delete.grid(row=5, column=2)
 
-        equals = Button(window, text="=", width=11, height=3, bg="#FEC208", fg="black",
+        equals = Button(window, text="=", width=11, height=3, bg="#FEC208",border=0, fg="black",
                         command=lambda: equals_function())
-        equals.grid(row=5, column=3, padx=0)
+        equals.grid(row=5, column=3)
 
 
 window = tkinter.Tk()
+window.resizable(0,0)
 obj = Calculator(window)
 window.mainloop()
