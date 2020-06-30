@@ -10,7 +10,7 @@ def clear():
 
 
 def set_text(toadd):
-    if delete["state"] == 'disabled' :
+    if delete["state"] == 'disabled':
         clear()
 
     delete["state"] = 'normal'
@@ -28,7 +28,6 @@ def del_function():
     var.set(new_text)
 
 
-
 def operation(operand):
     global last_operand, current_display
     last_operand = ""
@@ -42,37 +41,32 @@ def equals_function():
 
     delete["state"] = 'disabled'
     global current_display
+
+    from_display = display.cget("text")
+
+    if from_display == "":
+        from_display = current_display
+
     if last_operand == "+":
-        from_display = display.cget("text")
         current_display = float(current_display) + float(from_display)
-        var.set("")
-        var.set(current_display)
 
-    if last_operand == "-":
-        from_display = display.cget("text")
+    elif last_operand == "-":
         current_display = float(current_display) - float(from_display)
-        var.set("")
-        var.set(current_display)
 
-
-    if last_operand == "*":
-        from_display = display.cget("text")
+    elif last_operand == "*":
         current_display = float(current_display) * float(from_display)
-        var.set("")
-        var.set(current_display)
 
-    if last_operand == "/":
-        from_display = display.cget("text")
+    elif last_operand == "/":
         current_display = float(current_display) / float(from_display)
-        var.set("")
-        var.set(current_display)
 
-# ------------------------------Class-------------------
+    var.set("")
+    var.set(current_display)
+
+
+# ------------------------------Class---------------------------
 
 
 class Calculator():
-
-
 
     def __init__(self, window):
         window.geometry("350x420")
@@ -155,13 +149,6 @@ class Calculator():
         equals = Button(window, text="=", width=11, height=3, bg="#FEC208", fg="black",
                         command=lambda: equals_function())
         equals.grid(row=5, column=3, padx=0)
-
-
-
-
-
-
-
 
 
 window = tkinter.Tk()
