@@ -4,94 +4,83 @@ from tkinter import *
 
 # -----------------------------FUNCTIONS--------------------
 
+
 def clear():
-    display.delete(0, END)
-    display.insert(0, "")
+    var.set("")
 
 
 def set_text(toadd):
-    new_text = display.get() + toadd
-    display.delete(0, END)
-    display.insert(0, new_text)
+    if delete["state"] == 'disabled' :
+        clear()
+
+    delete["state"] = 'normal'
+    new_text = str(display.cget("text")) + toadd
+    var.set("")
+    var.set(new_text)
 
 
 def del_function():
-    new_text = display.get()[:-1]
-    display.delete(0, END)
-    display.insert(0, new_text)
+    new_text = display.cget("text")
+    if len(str(new_text)) == 1:
+        delete["state"] = 'disabled'
+    var.set("")
+    new_text = str(new_text[:-1])
+    var.set(new_text)
+
 
 
 def operation(operand):
-
-    global last_operand
+    global last_operand, current_display
     last_operand = ""
     last_operand = operand
 
-    if operand == "+":
-        global current_display, plus
-        current_display = display.get()
-        display.delete(0, END)
-
-    if operand == "-":
-        global minus
-        current_display = display.get()
-        display.delete(0, END)
-
-    if operand == "*":
-        global multi
-        current_display = display.get()
-        display.delete(0, END)
-
-    if operand == "/":
-        global div
-        current_display = display.get()
-        display.delete(0, END)
+    current_display = display.cget("text")
+    var.set("")
 
 
 def equals_function():
 
+    delete["state"] = 'disabled'
     global current_display
     if last_operand == "+":
-        print("TRUE")
-        from_display = display.get()
+        from_display = display.cget("text")
         current_display = float(current_display) + float(from_display)
-        display.delete(0, END)
-        display.insert(0, current_display)
-
+        var.set("")
+        var.set(current_display)
 
     if last_operand == "-":
-        from_display = display.get()
+        from_display = display.cget("text")
         current_display = float(current_display) - float(from_display)
-        display.delete(0, END)
-        display.insert(0, current_display)
+        var.set("")
+        var.set(current_display)
 
 
     if last_operand == "*":
-        from_display = display.get()
+        from_display = display.cget("text")
         current_display = float(current_display) * float(from_display)
-        display.delete(0, END)
-        display.insert(0, current_display)
-
+        var.set("")
+        var.set(current_display)
 
     if last_operand == "/":
-        from_display = display.get()
+        from_display = display.cget("text")
         current_display = float(current_display) / float(from_display)
-        display.delete(0, END)
-        display.insert(0, current_display)
-
-
+        var.set("")
+        var.set(current_display)
 
 # ------------------------------Class-------------------
 
 
 class Calculator():
 
+
+
     def __init__(self, window):
         window.geometry("350x420")
-        # window.configure(bg="#494949")
         window.title("The Hilarious Calculator")
+        global var
+        var = StringVar()
         global display
-        display = Entry(window, width=31, fg="#494949", bg="white", font=("Calibri", 16), justify=RIGHT)
+        display = Label(window, width=31, fg="#494949", textvariable=var, bg="white", font=("Calibri", 16), anchor="e")
         display.grid(ipady=55, padx=0, pady=0, columnspan=4, rowspan=1)
 
         Clear = Button(window, text="C", width=11, height=3, bg="#494949", fg="white", command=clear)
@@ -158,12 +147,21 @@ class Calculator():
         dot = Button(window, text=".", width=11, height=3, bg="#494949", fg="white", command=lambda: set_text("."))
         dot.grid(row=5, column=1, padx=0)
 
+        global delete
         delete = Button(window, text="del", width=11, height=3, bg="#494949", fg="white",
                         command=lambda: del_function())
         delete.grid(row=5, column=2, padx=0)
 
-        equals = Button(window, text="=", width=11, height=3, bg="#FEC208", fg="black", command=lambda: equals_function())
+        equals = Button(window, text="=", width=11, height=3, bg="#FEC208", fg="black",
+                        command=lambda: equals_function())
         equals.grid(row=5, column=3, padx=0)
+
+
+
+
+
+
+
 
 
 window = tkinter.Tk()
