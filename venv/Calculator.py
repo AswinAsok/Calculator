@@ -14,29 +14,32 @@ class Calculator:
         self.label_valueall.set("")
 
     def set_text(self, toadd):
-        self.label_valueall.set(str(self.displayall.cget("text")) + toadd)
 
-        self.label_value.set(str(self.display.cget("text")) + toadd)
+        if not (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/"):
+            self.label_value.set(str(self.display.cget("text")) + toadd)
 
         if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/":
+
+            self.label_valueall.set(self.displayall.cget("text")+self.display.cget("text")+toadd)
             self.label_value.set("")
 
 
     def equals_function(self):
         if self.display.cget("text")!="":
+            self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
             self.label_value.set(eval(self.displayall.cget("text")))
             self.label_valueall.set("")
 
 
     def __init__(self, window):
-        window.geometry("325x427")
+        window.geometry("325x436")
         window.title("The Hilarious Calculator")
         self.equals_clicked = False
         self.label_value = StringVar()
         self.label_valueall = StringVar()
 
         self.displayall = Label(window, width=29, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
-                             font=("Calibri", 16), anchor="e")
+                             font=("Calibri", 16), anchor="se")
         self.displayall.grid(row=0, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
         self.display = Label(window, width=23, bg="#5A5A5A", textvariable=self.label_value, fg="white",
@@ -117,13 +120,13 @@ class Calculator:
 
         zero = Button(window, text="0", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("0"))
-        zero.grid(row=6, column=0)
+        zero.grid(row=6, column=1)
 
         dot = Button(window, text=".", width=7, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("."))
-        dot.grid(row=6, column=1)
+        dot.grid(row=6, column=0)
 
-        delete = Button(window, text="del", width=7, height=2, bg="#494949", border=0, fg="white",
+        delete = Button(window, text="\u232b", width=7, height=2, bg="#494949", border=0, fg="white",
                         font=('Helvetica', '14'), command=lambda: obj.delete())
         delete.grid(row=6, column=2)
 
