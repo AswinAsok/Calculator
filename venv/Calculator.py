@@ -20,16 +20,20 @@ class Calculator:
 
         if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/":
             if self.displayall.cget("text") != toadd and self.display.cget("text") != "":
-                self.label_valueall.set(self.displayall.cget("text")+self.display.cget("text")+toadd)
+                self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
                 self.label_value.set("")
+                self.last_operand = toadd
 
+        if self.display.cget("text") == "" and toadd != self.last_operand:
+            self.label_valueall.set(self.displayall.cget("text")[0:-1] + toadd)
+            self.last_operand = toadd
 
     def equals_function(self):
-        if self.display.cget("text")!="":
+        if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
+                "text") != "":
             self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
             self.label_value.set(eval(self.displayall.cget("text")))
             self.label_valueall.set("")
-
 
     def __init__(self, window):
         window.geometry("325x436")
@@ -37,20 +41,21 @@ class Calculator:
         self.equals_clicked = False
         self.label_value = StringVar()
         self.label_valueall = StringVar()
+        self.last_operand = ""
 
         self.displayall = Label(window, width=29, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
-                             font=("Calibri", 16), anchor="se")
+                                font=("Calibri", 16), anchor="se")
         self.displayall.grid(row=0, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
         self.display = Label(window, width=23, bg="#5A5A5A", textvariable=self.label_value, fg="white",
                              font=("Calibri", 20), anchor="e")
-        self.display.grid(row=1,ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
+        self.display.grid(row=1, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
-        Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0, relief=GROOVE,
+        Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.clear())
         Clear.grid(row=2, column=0)
 
-        pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0, relief=GROOVE,
+        pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0,
                     font=('Helvetica', '14'))
         pi.grid(row=2, column=1)
 
@@ -131,7 +136,7 @@ class Calculator:
         delete.grid(row=6, column=2)
 
         equals = Button(window, text="=", width=7, height=2, bg="#FEC208", border=0, fg="white",
-                        font=('Helvetica', '14'), command=lambda:obj.equals_function())
+                        font=('Helvetica', '14'), command=lambda: obj.equals_function())
         equals.grid(row=6, column=3)
 
 
