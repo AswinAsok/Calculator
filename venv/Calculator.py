@@ -15,26 +15,10 @@ class Calculator:
     def set_text(self, toadd):
         self.label_value.set(str(self.display.cget("text")) + toadd)
 
-    def calculate(self, operand):
-
-        self.operand = operand
-        self.before_operation = self.display.cget("text")
-        self.label_value.set("")
-
     def equals_function(self):
-        if self.display.cget("text") != "":
-
-            self.equals_clicked = True
+        self.label_value.set(eval(self.display.cget("text")))
 
 
-            if self.operand == '+':
-               self.label_value.set(float(self.before_operation) + float(self.display.cget("text")))
-            elif self.operand == '-':
-                self.label_value.set(float(self.before_operation) - float(self.display.cget("text")))
-            elif self.operand == '*':
-                self.label_value.set(float(self.before_operation) * float(self.display.cget("text")))
-            elif self.operand == '/':
-                self.label_value.set(float(self.before_operation) / float(self.display.cget("text")))
 
     def __init__(self, window):
         window.geometry("325x427")
@@ -59,7 +43,7 @@ class Calculator:
         plusminus.grid(row=1, column=2)
 
         division = Button(window, text="/", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
-                          font=('Helvetica', '14'), command=lambda: obj.calculate("/"))
+                          font=('Helvetica', '14'), command=lambda: obj.set_text("/"))
         division.grid(row=1, column=3)
 
         # ------------------------------------------------------------------------
@@ -77,7 +61,7 @@ class Calculator:
         nine.grid(row=2, column=2)
 
         multi = Button(window, text="X", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
-                       font=('Helvetica', '14'), command=lambda: obj.calculate("*"))
+                       font=('Helvetica', '14'), command=lambda: obj.set_text("*"))
         multi.grid(row=2, column=3)
 
         # ------------------------------------------------------------------------
@@ -95,7 +79,7 @@ class Calculator:
         six.grid(row=3, column=2)
 
         minus = Button(window, text="-", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
-                       font=('Helvetica', '14'), command=lambda: obj.calculate("-"))
+                       font=('Helvetica', '14'), command=lambda: obj.set_text("-"))
         minus.grid(row=3, column=3)
 
         # --------------------------------------------------------------------------
@@ -113,7 +97,7 @@ class Calculator:
         three.grid(row=4, column=2)
 
         plus = Button(window, text="+", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
-                      font=('Helvetica', '14'), command=lambda: obj.calculate("+"))
+                      font=('Helvetica', '14'), command=lambda: obj.set_text("+"))
         plus.grid(row=4, column=3)
 
         # --------------------------------------------------------------------------
