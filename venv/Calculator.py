@@ -19,9 +19,9 @@ class Calculator:
             self.label_value.set(str(self.display.cget("text")) + toadd)
 
         if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/":
-
-            self.label_valueall.set(self.displayall.cget("text")+self.display.cget("text")+toadd)
-            self.label_value.set("")
+            if self.displayall.cget("text") != toadd and self.display.cget("text") != "":
+                self.label_valueall.set(self.displayall.cget("text")+self.display.cget("text")+toadd)
+                self.label_value.set("")
 
 
     def equals_function(self):
