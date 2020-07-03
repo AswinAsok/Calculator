@@ -5,28 +5,46 @@ from tkinter import *
 class Calculator:
 
     def negate(self):
+
+        if (self.display.cget("text") == "Cannot Divide By Zero"):
+            self.clear()
+
         if self.display.cget("text") != "":
             self.label_value.set(str(int(self.display.cget("text")) * -1))
 
     def dot_operator(self):
+
+        if (self.display.cget("text") == "Cannot Divide By Zero"):
+            self.clear()
+
         if (self.display.cget("text") == "" or self.display.cget("text")[-1] != '.' and str(
                 self.display.cget("text")).count(".") < 1):
             self.label_value.set(self.display.cget("text") + ".")
 
     def delete(self):
+        if (self.display.cget("text") == "Cannot Divide By Zero"):
+            self.clear()
+
         if not self.equals_clicked:
             if not self.equals_clicked:
                 self.label_value.set(str(self.display.cget("text")[:-1]))
 
     def clear(self):
+
         self.label_value.set("")
         self.label_valueall.set("")
 
     def pi(self):
-        if(self.display.cget("text")!=""):
-            self.label_value.set(str(int(self.display.cget("text"))*3.14))
+        if (self.display.cget("text") == "Cannot Divide By Zero"):
+            self.clear()
+
+        if (self.display.cget("text") != ""):
+            self.label_value.set(str(float(self.display.cget("text")) * 3.14))
 
     def set_text(self, toadd):
+
+        if (self.display.cget("text") == "Cannot Divide By Zero"):
+            self.clear()
 
         if self.equals_clicked and self.display.cget("text") != "" and toadd.isdigit():
             self.label_value.set("")
@@ -51,7 +69,11 @@ class Calculator:
                 "text") != "":
             self.equals_clicked = True
             self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
-            self.label_value.set(eval(self.displayall.cget("text")))
+            try:
+                self.label_value.set(eval(self.displayall.cget("text")))
+            except ZeroDivisionError:
+                self.label_value.set("Cannot Divide By Zero")
+                self.equals_clicked = False
             self.label_valueall.set("")
 
     def __init__(self, window):
@@ -75,7 +97,7 @@ class Calculator:
         Clear.grid(row=2, column=0, pady=1, padx=1)
 
         pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0,
-                    font=('Helvetica', '14'),command=lambda: obj.pi())
+                    font=('Helvetica', '14'), command=lambda: obj.pi())
         pi.grid(row=2, column=1)
 
         plusminus = Button(window, text="+/-", width=7, height=2, bg="#494949", fg="white", border=0,
