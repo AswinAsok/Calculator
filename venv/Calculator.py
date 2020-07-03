@@ -21,6 +21,10 @@ class Calculator:
         self.label_value.set("")
         self.label_valueall.set("")
 
+    def pi(self):
+        if(self.display.cget("text")!=""):
+            self.label_value.set(str(int(self.display.cget("text"))*3.14))
+
     def set_text(self, toadd):
 
         self.equals_clicked = False
@@ -67,7 +71,7 @@ class Calculator:
         Clear.grid(row=2, column=0, pady=1, padx=1)
 
         pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0,
-                    font=('Helvetica', '14'))
+                    font=('Helvetica', '14'),command=lambda: obj.pi())
         pi.grid(row=2, column=1)
 
         plusminus = Button(window, text="+/-", width=7, height=2, bg="#494949", fg="white", border=0,
@@ -146,7 +150,7 @@ class Calculator:
                         font=('Helvetica', '14'), command=lambda: obj.delete())
         delete.grid(row=6, column=2)
 
-        equals = Button(window, text="=", width=7, height=2, bg="#FEC208", border=0, fg="white",
+        equals = Button(window, text="=", width=7, height=2, bg="#FEC208", border=0, fg="black",
                         font=('Helvetica', '14'), command=lambda: obj.equals_function())
         equals.grid(row=6, column=3)
 
