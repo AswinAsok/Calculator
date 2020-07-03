@@ -5,15 +5,17 @@ from tkinter import *
 class Calculator:
 
     def delete(self):
-
-        if not self.equals_clicked:
-            self.label_value.set(str(self.display.cget("text")[:-1]))
+        if not self.equals_clicked :
+            if not self.equals_clicked:
+                self.label_value.set(str(self.display.cget("text")[:-1]))
 
     def clear(self):
         self.label_value.set("")
         self.label_valueall.set("")
 
     def set_text(self, toadd):
+
+        self.equals_clicked = False
 
         if not (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/"):
             self.label_value.set(str(self.display.cget("text")) + toadd)
@@ -31,29 +33,30 @@ class Calculator:
     def equals_function(self):
         if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
                 "text") != "":
+            self.equals_clicked = True
             self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
             self.label_value.set(eval(self.displayall.cget("text")))
             self.label_valueall.set("")
 
     def __init__(self, window):
-        window.geometry("325x436")
+        window.geometry("348x448")
         window.title("The Hilarious Calculator")
         self.equals_clicked = False
         self.label_value = StringVar()
         self.label_valueall = StringVar()
         self.last_operand = ""
 
-        self.displayall = Label(window, width=29, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
+        self.displayall = Label(window, width=31, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
                                 font=("Calibri", 16), anchor="se")
         self.displayall.grid(row=0, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
-        self.display = Label(window, width=23, bg="#5A5A5A", textvariable=self.label_value, fg="white",
+        self.display = Label(window, width=24, bg="#5A5A5A", textvariable=self.label_value, fg="white",
                              font=("Calibri", 20), anchor="e")
         self.display.grid(row=1, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
         Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.clear())
-        Clear.grid(row=2, column=0)
+        Clear.grid(row=2, column=0,pady=1,padx=1)
 
         pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0,
                     font=('Helvetica', '14'))
@@ -71,7 +74,7 @@ class Calculator:
 
         seven = Button(window, text="7", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("7"))
-        seven.grid(row=3, column=0)
+        seven.grid(row=3, column=0,pady=1,padx=1)
 
         eight = Button(window, text="8", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("8"))
@@ -89,7 +92,7 @@ class Calculator:
 
         four = Button(window, text="4", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("4"))
-        four.grid(row=4, column=0)
+        four.grid(row=4, column=0,pady=1,padx=1)
 
         five = Button(window, text="5", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("5"))
@@ -107,7 +110,7 @@ class Calculator:
 
         one = Button(window, text="1", width=7, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("1"))
-        one.grid(row=5, column=0)
+        one.grid(row=5, column=0,pady=1,padx=1)
 
         two = Button(window, text="2", width=7, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("2"))
@@ -125,7 +128,7 @@ class Calculator:
 
         zero = Button(window, text="0", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("0"))
-        zero.grid(row=6, column=1)
+        zero.grid(row=6, column=1,pady=1,padx=1)
 
         dot = Button(window, text=".", width=7, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("."))
@@ -142,5 +145,6 @@ class Calculator:
 
 window = tkinter.Tk()
 window.resizable(0, 0)
+window.configure(bg = "#5A5A5A")
 obj = Calculator(window)
 window.mainloop()
