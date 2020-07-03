@@ -5,7 +5,8 @@ from tkinter import *
 class Calculator:
 
     def negate(self):
-        self.label_value.set(str(int(self.display.cget("text")) * -1))
+        if self.display.cget("text") != "":
+            self.label_value.set(str(int(self.display.cget("text")) * -1))
 
     def dot_operator(self):
         if (self.display.cget("text") == "" or self.display.cget("text")[-1] != '.' and str(
@@ -26,6 +27,9 @@ class Calculator:
             self.label_value.set(str(int(self.display.cget("text"))*3.14))
 
     def set_text(self, toadd):
+
+        if self.equals_clicked and self.display.cget("text") != "" and toadd.isdigit():
+            self.label_value.set("")
 
         self.equals_clicked = False
 
@@ -51,7 +55,7 @@ class Calculator:
             self.label_valueall.set("")
 
     def __init__(self, window):
-        window.geometry("348x448")
+        window.geometry("348x430")
         window.title("The Hilarious Calculator")
         self.equals_clicked = False
         self.label_value = StringVar()
@@ -60,11 +64,11 @@ class Calculator:
 
         self.displayall = Label(window, width=31, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
                                 font=("Calibri", 16), anchor="se")
-        self.displayall.grid(row=0, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
+        self.displayall.grid(row=0, ipady=14, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
-        self.display = Label(window, width=24, bg="#5A5A5A", textvariable=self.label_value, fg="white",
-                             font=("Calibri", 20), anchor="e")
-        self.display.grid(row=1, ipady=20, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
+        self.display = Label(window, width=21, bg="#5A5A5A", textvariable=self.label_value, fg="white",
+                             font=("Calibri", 24), anchor="e")
+        self.display.grid(row=1, ipady=14, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
         Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.clear())
@@ -157,7 +161,7 @@ class Calculator:
 
 window = tkinter.Tk()
 window.resizable(0, 0)
-window.attributes('-alpha', 0.96)
+window.attributes('-alpha', 0.98)
 window.configure(bg="#5A5A5A")
 obj = Calculator(window)
 window.mainloop()
