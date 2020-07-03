@@ -5,11 +5,15 @@ from tkinter import *
 class Calculator:
 
     def negate(self):
-        self.label_value.set(str(int(self.display.cget("text"))*-1))
+        self.label_value.set(str(int(self.display.cget("text")) * -1))
 
+    def dot_operator(self):
+        if (self.display.cget("text") == "" or self.display.cget("text")[-1] != '.' and str(
+                self.display.cget("text")).count(".") < 1):
+            self.label_value.set(self.display.cget("text") + ".")
 
     def delete(self):
-        if not self.equals_clicked :
+        if not self.equals_clicked:
             if not self.equals_clicked:
                 self.label_value.set(str(self.display.cget("text")[:-1]))
 
@@ -60,14 +64,14 @@ class Calculator:
 
         Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.clear())
-        Clear.grid(row=2, column=0,pady=1,padx=1)
+        Clear.grid(row=2, column=0, pady=1, padx=1)
 
         pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0,
                     font=('Helvetica', '14'))
         pi.grid(row=2, column=1)
 
         plusminus = Button(window, text="+/-", width=7, height=2, bg="#494949", fg="white", border=0,
-                           relief=GROOVE, font=('Helvetica', '14'),command=lambda: obj.negate())
+                           relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.negate())
         plusminus.grid(row=2, column=2)
 
         division = Button(window, text="/", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
@@ -78,7 +82,7 @@ class Calculator:
 
         seven = Button(window, text="7", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("7"))
-        seven.grid(row=3, column=0,pady=1,padx=1)
+        seven.grid(row=3, column=0, pady=1, padx=1)
 
         eight = Button(window, text="8", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("8"))
@@ -96,7 +100,7 @@ class Calculator:
 
         four = Button(window, text="4", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("4"))
-        four.grid(row=4, column=0,pady=1,padx=1)
+        four.grid(row=4, column=0, pady=1, padx=1)
 
         five = Button(window, text="5", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("5"))
@@ -114,7 +118,7 @@ class Calculator:
 
         one = Button(window, text="1", width=7, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("1"))
-        one.grid(row=5, column=0,pady=1,padx=1)
+        one.grid(row=5, column=0, pady=1, padx=1)
 
         two = Button(window, text="2", width=7, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("2"))
@@ -132,10 +136,10 @@ class Calculator:
 
         zero = Button(window, text="0", width=7, height=2, bg="#494949", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("0"))
-        zero.grid(row=6, column=1,pady=1,padx=1)
+        zero.grid(row=6, column=1, pady=1, padx=1)
 
         dot = Button(window, text=".", width=7, height=2, bg="#494949", fg="white", border=0,
-                     font=('Helvetica', '14'), command=lambda: obj.set_text("."))
+                     font=('Helvetica', '14'), command=lambda: obj.dot_operator())
         dot.grid(row=6, column=0)
 
         delete = Button(window, text="\u232b", width=7, height=2, bg="#494949", border=0, fg="white",
@@ -149,7 +153,7 @@ class Calculator:
 
 window = tkinter.Tk()
 window.resizable(0, 0)
-window.attributes('-alpha',0.96)
-window.configure(bg = "#5A5A5A")
+window.attributes('-alpha', 0.96)
+window.configure(bg="#5A5A5A")
 obj = Calculator(window)
 window.mainloop()
