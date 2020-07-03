@@ -4,6 +4,10 @@ from tkinter import *
 
 class Calculator:
 
+    def negate(self):
+        self.label_value.set(str(int(self.display.cget("text"))*-1))
+
+
     def delete(self):
         if not self.equals_clicked :
             if not self.equals_clicked:
@@ -26,7 +30,7 @@ class Calculator:
                 self.label_value.set("")
                 self.last_operand = toadd
 
-        if self.display.cget("text") == "" and toadd != self.last_operand:
+        if self.display.cget("text") == "" and toadd != self.last_operand and self.displayall.cget("text") != "":
             self.label_valueall.set(self.displayall.cget("text")[0:-1] + toadd)
             self.last_operand = toadd
 
@@ -63,7 +67,7 @@ class Calculator:
         pi.grid(row=2, column=1)
 
         plusminus = Button(window, text="+/-", width=7, height=2, bg="#494949", fg="white", border=0,
-                           relief=GROOVE, font=('Helvetica', '14'))
+                           relief=GROOVE, font=('Helvetica', '14'),command=lambda: obj.negate())
         plusminus.grid(row=2, column=2)
 
         division = Button(window, text="/", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
@@ -145,6 +149,7 @@ class Calculator:
 
 window = tkinter.Tk()
 window.resizable(0, 0)
+window.attributes('-alpha',0.96)
 window.configure(bg = "#5A5A5A")
 obj = Calculator(window)
 window.mainloop()
