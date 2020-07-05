@@ -10,7 +10,7 @@ class Calculator:
             self.clear()
 
         if self.display.cget("text") != "":
-            self.label_value.set(str(int(self.display.cget("text")) * -1))
+            self.label_value.set(str(float(self.display.cget("text")) * -1))
 
     def dot_operator(self):
 
@@ -22,6 +22,10 @@ class Calculator:
             self.label_value.set(self.display.cget("text") + ".")
 
     def delete(self):
+
+        if(self.display.cget("text")=="0"):
+            return
+
         if (self.display.cget("text") == "Cannot Divide By Zero"):
             self.clear()
 
@@ -31,8 +35,9 @@ class Calculator:
 
     def clear(self):
 
-        self.label_value.set("")
+        self.label_value.set("0")
         self.label_valueall.set("")
+
 
     def pi(self):
         if (self.display.cget("text") == "Cannot Divide By Zero"):
@@ -43,6 +48,9 @@ class Calculator:
 
     def set_text(self, toadd):
 
+        if (self.display.cget("text")=="." and self.displayall.cget("text")==""):
+            return
+
         if (self.display.cget("text") == "Cannot Divide By Zero"):
             self.clear()
 
@@ -52,6 +60,8 @@ class Calculator:
         self.equals_clicked = False
 
         if not (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/"):
+            if self.display.cget("text")=="0":
+                self.label_value.set("")
             self.label_value.set(str(self.display.cget("text")) + toadd)
 
         if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/":
@@ -65,6 +75,10 @@ class Calculator:
             self.last_operand = toadd
 
     def equals_function(self):
+
+        if self.displayall.cget("text") =="" or self.display.cget("text")==".":
+            return
+        
         if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
                 "text") != "":
             self.equals_clicked = True
@@ -90,6 +104,7 @@ class Calculator:
 
         self.display = Label(window, width=21, bg="#5A5A5A", textvariable=self.label_value, fg="white",
                              font=("Calibri", 24), anchor="e")
+        self.label_value.set("0")
         self.display.grid(row=1, ipady=14, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
 
         Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
