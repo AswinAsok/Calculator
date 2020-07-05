@@ -124,15 +124,15 @@ class Calculator:
 
         # ------------------------------------------------------------------------
 
-        seven = Button(window, text="7", width=6, height=2, bg="#494949", fg="white", border=0,
+        seven = Button(window, text="7", width=6, height=2, bg="#404040", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("7"))
         seven.grid(row=3, column=0, pady=1, padx=1)
 
-        eight = Button(window, text="8", width=6, height=2, bg="#494949", fg="white", border=0,
+        eight = Button(window, text="8", width=6, height=2, bg="#404040", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("8"))
         eight.grid(row=3, column=1)
 
-        nine = Button(window, text="9", width=6, height=2, bg="#494949", fg="white", border=0,
+        nine = Button(window, text="9", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("9"))
         nine.grid(row=3, column=2)
 
@@ -142,15 +142,15 @@ class Calculator:
 
         # ------------------------------------------------------------------------
 
-        four = Button(window, text="4", width=6, height=2, bg="#494949", fg="white", border=0,
+        four = Button(window, text="4", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("4"))
         four.grid(row=4, column=0, pady=1, padx=1)
 
-        five = Button(window, text="5", width=6, height=2, bg="#494949", fg="white", border=0,
+        five = Button(window, text="5", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("5"))
         five.grid(row=4, column=1)
 
-        six = Button(window, text="6", width=6, height=2, bg="#494949", fg="white", border=0,
+        six = Button(window, text="6", width=6, height=2, bg="#404040", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("6"))
         six.grid(row=4, column=2)
 
@@ -160,15 +160,15 @@ class Calculator:
 
         # --------------------------------------------------------------------------
 
-        one = Button(window, text="1", width=6, height=2, bg="#494949", fg="white", border=0,
+        one = Button(window, text="1", width=6, height=2, bg="#404040", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("1"))
         one.grid(row=5, column=0, pady=2, padx=1)
 
-        two = Button(window, text="2", width=6, height=2, bg="#494949", fg="white", border=0,
+        two = Button(window, text="2", width=6, height=2, bg="#404040", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("2"))
         two.grid(row=5, column=1)
 
-        three = Button(window, text="3", width=6, height=2, bg="#494949", fg="white", border=0,
+        three = Button(window, text="3", width=6, height=2, bg="#404040", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("3"))
         three.grid(row=5, column=2)
 
@@ -178,7 +178,7 @@ class Calculator:
 
         # --------------------------------------------------------------------------
 
-        zero = Button(window, text="0", width=6, height=2, bg="#494949", fg="white", border=0,
+        zero = Button(window, text="0", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("0"))
         zero.grid(row=6, column=1, pady=1, padx=1)
 
