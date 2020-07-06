@@ -1,8 +1,25 @@
 import tkinter
 from tkinter import *
+from math import *
 
 
 class Calculator:
+
+    def sqroot(self):
+        if self.display.cget("text")!="":
+            self.label_valueall.set(self.displayall.cget("text")+"sqrt("+self.display.cget("text")+")")
+            self.label_value.set("")
+
+    def square(self):
+        if self.display.cget("text")!="" and self.display.cget("text")!="0":
+            self.label_valueall.set(self.displayall.cget("text")+str(int(self.display.cget("text"))*int(self.display.cget("text"))))
+            self.label_value.set("")
+
+    def reciprocal(self):
+        if self.display.cget("text") != "" and self.display.cget("text") != "0":
+            self.label_valueall.set(self.displayall.cget("text")+"1/("+self.display.cget("text")+")")
+            self.label_value.set("")
+
 
     def negate(self):
 
@@ -58,13 +75,21 @@ class Calculator:
 
         self.equals_clicked = False
 
-        if not (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/"):
+        if not (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/" or toadd == "(" or toadd == ")"):
             if self.display.cget("text") == "0":
                 self.label_value.set("")
             self.label_value.set(str(self.display.cget("text")) + toadd)
 
-        if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/":
-            if self.displayall.cget("text") != toadd and self.display.cget("text") != "":
+        if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/" or toadd == "(" or toadd == ")" :
+
+            if toadd !="(" or toadd !=")":
+                if self.displayall.cget("text")!="" and self.displayall.cget("text")[-1]==toadd and self.display.cget("text")=="":
+                    return
+
+            if toadd == "(" or toadd == ")" and self.display.cget("text") == "0" and self.displayall.cget("text") == "":
+                self.label_value.set("")
+
+            if self.displayall.cget("text") != toadd and self.display.cget("text") != "0":
                 self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
                 self.label_value.set("")
                 self.last_operand = toadd
@@ -79,7 +104,7 @@ class Calculator:
             return
 
         if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
-                "text") != "":
+                "text") != "" or self.displayall.cget("text")[-1] == ")":
             self.equals_clicked = True
             self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
             try:
@@ -108,23 +133,23 @@ class Calculator:
         #-------------------------------------------------------------------------------------
 
         lbracket = Button(window, text="(", width=3, height=2, bg="#494949", fg="white", border=0,
-                       font=('Helvetica', '14'), command=lambda: obj.clear())
+                       font=('Helvetica', '14'), command=lambda: obj.set_text("("))
         lbracket.grid(row=2, column=0, pady=1, padx=1,sticky="W")
 
         rbracket = Button(window, text=")", width=3, height=2, bg="#494949", fg="white", border=0,
-                          font=('Helvetica', '14'), command=lambda: obj.clear())
+                          font=('Helvetica', '14'), command=lambda: obj.set_text(")"))
         rbracket.grid(row=2, column=0, pady=1, padx=1,stick="E")
 
         sqroot = Button(window, text="√", width=6, height=2, bg="#494949", fg="white", border=0,
-                    font=('Helvetica', '14'), command=lambda: obj.pi())
+                    font=('Helvetica', '14'), command=lambda: obj.sqroot())
         sqroot.grid(row=2, column=1)
 
         square = Button(window, text="x²", width=6, height=2, bg="#494949", fg="white", border=0,
-                           relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.negate())
+                           relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.square())
         square.grid(row=2, column=2)
 
         reciprocal = Button(window, text="1/x", width=6, height=2, bg="#5E4BB6", fg="white", border=0,
-                          font=('Helvetica', '14'), command=lambda: obj.set_text("/"))
+                          font=('Helvetica', '14'), command=lambda: obj.reciprocal())
         reciprocal.grid(row=2, column=3)
 
         # -------------------------------------------------------------------------------------
