@@ -90,7 +90,7 @@ class Calculator:
             self.label_valueall.set("")
 
     def __init__(self, window):
-        window.geometry("297x430")
+        window.geometry("297x490")
         window.title("The Hilarious Calculator")
         self.equals_clicked = False
         self.label_value = StringVar()
@@ -99,104 +99,127 @@ class Calculator:
 
         self.displayall = Label(window, width=26, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
                                 font=("Calibri", 16), anchor="se")
-        self.displayall.grid(row=0, ipady=14, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
+        self.displayall.grid(row=0, ipady=14, columnspan=6, rowspan=1, padx=0, pady=0, sticky="W")
 
         self.display = Label(window, width=18, bg="#5A5A5A", textvariable=self.label_value, fg="white",
                              font=("Calibri", 24), anchor="e")
         self.label_value.set("0")
         self.display.grid(row=1, ipady=14, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
+        #-------------------------------------------------------------------------------------
+
+        lbracket = Button(window, text="(", width=3, height=2, bg="#494949", fg="white", border=0,
+                       font=('Helvetica', '14'), command=lambda: obj.clear())
+        lbracket.grid(row=2, column=0, pady=1, padx=1,sticky="W")
+
+        rbracket = Button(window, text=")", width=3, height=2, bg="#494949", fg="white", border=0,
+                          font=('Helvetica', '14'), command=lambda: obj.clear())
+        rbracket.grid(row=2, column=0, pady=1, padx=1,stick="E")
+
+        sqroot = Button(window, text="√", width=6, height=2, bg="#494949", fg="white", border=0,
+                    font=('Helvetica', '14'), command=lambda: obj.pi())
+        sqroot.grid(row=2, column=1)
+
+        square = Button(window, text="x²", width=6, height=2, bg="#494949", fg="white", border=0,
+                           relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.negate())
+        square.grid(row=2, column=2)
+
+        reciprocal = Button(window, text="1/x", width=6, height=2, bg="#5E4BB6", fg="white", border=0,
+                          font=('Helvetica', '14'), command=lambda: obj.set_text("/"))
+        reciprocal.grid(row=2, column=3)
+
+        # -------------------------------------------------------------------------------------
 
         Clear = Button(window, text="C", width=6, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.clear())
-        Clear.grid(row=2, column=0, pady=1, padx=1)
+        Clear.grid(row=3, column=0, pady=1, padx=1)
 
         pi = Button(window, text="π", width=6, height=2, bg="#494949", fg="white", border=0,
                     font=('Helvetica', '14'), command=lambda: obj.pi())
-        pi.grid(row=2, column=1)
+        pi.grid(row=3, column=1)
 
         plusminus = Button(window, text="+/-", width=6, height=2, bg="#494949", fg="white", border=0,
                            relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.negate())
-        plusminus.grid(row=2, column=2)
+        plusminus.grid(row=3, column=2)
 
         division = Button(window, text="/", width=6, height=2, bg="#5E4BB6", fg="white", border=0,
                           font=('Helvetica', '14'), command=lambda: obj.set_text("/"))
-        division.grid(row=2, column=3)
+        division.grid(row=3, column=3)
 
         # ------------------------------------------------------------------------
 
         seven = Button(window, text="7", width=6, height=2, bg="#404040", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("7"))
-        seven.grid(row=3, column=0, pady=1, padx=1)
+        seven.grid(row=4, column=0, pady=1, padx=1)
 
         eight = Button(window, text="8", width=6, height=2, bg="#404040", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("8"))
-        eight.grid(row=3, column=1)
+        eight.grid(row=4, column=1)
 
         nine = Button(window, text="9", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("9"))
-        nine.grid(row=3, column=2)
+        nine.grid(row=4, column=2)
 
         multi = Button(window, text="X", width=6, height=2, bg="#5E4BB6", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("*"))
-        multi.grid(row=3, column=3)
+        multi.grid(row=4, column=3)
 
         # ------------------------------------------------------------------------
 
         four = Button(window, text="4", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("4"))
-        four.grid(row=4, column=0, pady=1, padx=1)
+        four.grid(row=5, column=0, pady=1, padx=1)
 
         five = Button(window, text="5", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("5"))
-        five.grid(row=4, column=1)
+        five.grid(row=5, column=1)
 
         six = Button(window, text="6", width=6, height=2, bg="#404040", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("6"))
-        six.grid(row=4, column=2)
+        six.grid(row=5, column=2)
 
         minus = Button(window, text="-", width=6, height=2, bg="#5E4BB6", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("-"))
-        minus.grid(row=4, column=3)
+        minus.grid(row=5, column=3)
 
         # --------------------------------------------------------------------------
 
         one = Button(window, text="1", width=6, height=2, bg="#404040", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("1"))
-        one.grid(row=5, column=0, pady=2, padx=1)
+        one.grid(row=6, column=0, pady=2, padx=1)
 
         two = Button(window, text="2", width=6, height=2, bg="#404040", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.set_text("2"))
-        two.grid(row=5, column=1)
+        two.grid(row=6, column=1)
 
         three = Button(window, text="3", width=6, height=2, bg="#404040", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.set_text("3"))
-        three.grid(row=5, column=2)
+        three.grid(row=6, column=2)
 
         plus = Button(window, text="+", width=6, height=2, bg="#5E4BB6", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("+"))
-        plus.grid(row=5, column=3)
+        plus.grid(row=6, column=3)
 
         # --------------------------------------------------------------------------
 
         zero = Button(window, text="0", width=6, height=2, bg="#404040", fg="white", border=0,
                       font=('Helvetica', '14'), command=lambda: obj.set_text("0"))
-        zero.grid(row=6, column=1, pady=1, padx=1)
+        zero.grid(row=7, column=1, pady=1, padx=1)
 
         dot = Button(window, text=".", width=6, height=2, bg="#494949", fg="white", border=0,
                      font=('Helvetica', '14'), command=lambda: obj.dot_operator())
-        dot.grid(row=6, column=0)
+        dot.grid(row=7, column=0)
 
         delete = Button(window, text="\u232b", width=6, height=2, bg="#494949", border=0, fg="white",
                         font=('Helvetica', '14'), command=lambda: obj.delete())
-        delete.grid(row=6, column=2)
+        delete.grid(row=7, column=2)
 
         equals = Button(window, text="=", width=6, height=2, bg="#FEC208", border=0, fg="black",
                         font=('Helvetica', '14'), command=lambda: obj.equals_function())
-        equals.grid(row=6, column=3, padx=2)
+        equals.grid(row=7, column=3, padx=2)
 
 
 window = tkinter.Tk()
-window.resizable(0, 0)
+#window.resizable(0, 0)
 window.attributes('-alpha', 0.98)
 window.configure(bg="#5A5A5A")
 obj = Calculator(window)
