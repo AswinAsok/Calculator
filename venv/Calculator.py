@@ -6,7 +6,7 @@ from math import *
 class Calculator:
 
     def sqroot(self):
-        if self.display.cget("text") != "":
+        if self.display.cget("text") != "0" and self.display.cget("text") != "":
             self.label_valueall.set(self.displayall.cget("text") + "sqrt(" + str(self.display.cget("text")) + ")")
             self.label_value.set("")
 
@@ -32,12 +32,16 @@ class Calculator:
 
     def dot_operator(self):
 
+        if self.equals_clicked and self.display.cget("text") != "":
+            self.label_value.set("0")
+            self.equals_clicked = False
+
         if (self.display.cget("text") == "Cannot Divide By Zero"):
             self.clear()
 
-        if (self.display.cget("text") == "" or self.display.cget("text")[-1] != '.' and str(
-                self.display.cget("text")).count(".") < 1):
-            self.label_value.set(self.display.cget("text") + ".")
+        if str(self.display.cget("text")).count(".") < 1:
+            if str(self.display.cget("text") == "") or str(self.display.cget("text")[-1] != '.'):
+                self.label_value.set(self.display.cget("text") + ".")
 
     def delete(self):
 
@@ -104,10 +108,17 @@ class Calculator:
 
             if toadd == "(" or toadd == ")" and self.display.cget("text") == "0" and self.displayall.cget("text") == "":
                 self.label_value.set("")
-                self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
+                if toadd == ")":
+                    if int(str(self.displayall.cget("text")).count("(")) != 0:
+                        self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
+                if toadd == "(":
+                    self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
 
             if self.displayall.cget("text") != toadd and self.display.cget("text") != "0" and self.display.cget(
                     "text") != "" or self.squared:
+                if self.display.cget("text")[-1] == ".":
+                    print("true")
+                    return
                 self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
                 self.label_value.set("")
                 self.last_operand = toadd
@@ -123,28 +134,27 @@ class Calculator:
 
         count1 = int(str(self.displayall.cget("text")).count("("))
         count2 = int(str(self.displayall.cget("text")).count(")"))
-        if not count2==count1:
-            self.label_valueall.set(self.displayall.cget("text")+self.display.cget("text"))
+        if not count2 == count1:
+            self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
             self.label_value.set("")
-            while(count2<count1):
-                self.label_valueall.set(self.displayall.cget("text")+")")
+            while (count2 < count1):
+                self.label_valueall.set(self.displayall.cget("text") + ")")
                 count2 = count2 + 1
-
-
 
         if self.displayall.cget("text") == "" or self.display.cget("text") == ".":
             return
 
-        if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
-                "text") != "" or self.displayall.cget("text")[-1] == ")":
-            self.equals_clicked = True
-            self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
-            try:
-                self.label_value.set(eval(self.displayall.cget("text")))
-            except ZeroDivisionError:
-                self.label_value.set("Cannot Divide By Zero")
-                self.equals_clicked = False
-            self.label_valueall.set("")
+        if count1 == count2:
+            if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
+                    "text") != "" or self.displayall.cget("text")[-1] == ")":
+                self.equals_clicked = True
+                self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
+                try:
+                    self.label_value.set(eval(self.displayall.cget("text")))
+                except ZeroDivisionError:
+                    self.label_value.set("Cannot Divide By Zero")
+                    self.equals_clicked = False
+                self.label_valueall.set("")
 
     def __init__(self, window):
         window.geometry("341x495")
