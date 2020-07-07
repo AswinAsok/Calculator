@@ -121,6 +121,11 @@ class Calculator:
 
     def equals_function(self):
 
+        count1 = int(str(self.displayall.cget("text")).count("("))
+        count2 = int(str(self.displayall.cget("text")).count(")"))
+        if not count2==count1:
+            return
+
         if self.displayall.cget("text") == "" or self.display.cget("text") == ".":
             return
 
