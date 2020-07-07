@@ -65,13 +65,18 @@ class Calculator:
 
     def set_text(self, toadd):
 
-        if self.displayall.cget("text")!="":
-            if  (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/") and self.displayall.cget("text")[-1]==")":
+        if self.displayall.cget("text") != "":
+
+            if self.displayall.cget("text")[-1] == ")" and toadd == "(":  # "7-(5+4)(" For Fixing
+                return
+
+            if (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/") and self.displayall.cget("text")[
+                -1] == ")":
                 self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
-            elif self.displayall.cget("text")[-1]==")" and toadd == ")":
+            elif self.displayall.cget("text")[-1] == ")" and toadd == ")":
                 count1 = int(str(self.displayall.cget("text")).count("("))
                 count2 = int(str(self.displayall.cget("text")).count(")"))
-                if count2<count1:
+                if count2 < count1:
                     self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
 
         if (self.display.cget("text") == "." and self.displayall.cget("text") == ""):
@@ -108,8 +113,8 @@ class Calculator:
                 self.last_operand = toadd
                 self.squared = False
 
-
-        if self.display.cget("text") == "" and toadd != self.last_operand and self.displayall.cget("text") != "" and not self.squared:
+        if self.display.cget("text") == "" and toadd != self.last_operand and self.displayall.cget(
+                "text") != "" and not self.squared:
             if self.displayall.cget("text")[-1] != "(" and self.displayall.cget("text")[-1] != ")":
                 self.label_valueall.set(self.displayall.cget("text")[0:-1] + toadd)
                 self.last_operand = toadd
