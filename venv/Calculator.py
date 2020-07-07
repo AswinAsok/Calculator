@@ -124,7 +124,13 @@ class Calculator:
         count1 = int(str(self.displayall.cget("text")).count("("))
         count2 = int(str(self.displayall.cget("text")).count(")"))
         if not count2==count1:
-            return
+            self.label_valueall.set(self.displayall.cget("text")+self.display.cget("text"))
+            self.label_value.set("")
+            while(count2<count1):
+                self.label_valueall.set(self.displayall.cget("text")+")")
+                count2 = count2 + 1
+
+
 
         if self.displayall.cget("text") == "" or self.display.cget("text") == ".":
             return
