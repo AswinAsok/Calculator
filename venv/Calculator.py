@@ -165,6 +165,171 @@ class Calculator:
         self.label_valueall = StringVar()
         self.last_operand = ""
 
+        # ============================Bind Functions===========
+        # -------------------------------------------------ROW2
+
+        def on_enterlb(e):
+            lbracket.configure(bg="#777777")
+
+        def on_leavelb(e):
+            lbracket.configure(bg="#494949")
+
+        def on_enterrb(e):
+            rbracket.configure(bg="#777777")
+
+        def on_leaverb(e):
+            rbracket.configure(bg="#494949")
+
+        def on_entersqroot(e):
+            sqroot.configure(bg="#777777")
+
+        def on_leavesqroot(e):
+            sqroot.configure(bg="#494949")
+
+        def on_entersquare(e):
+            square.configure(bg="#777777")
+
+        def on_leavesquare(e):
+            square.configure(bg="#494949")
+
+        def on_enterreci(e):
+            reciprocal.configure(bg="#7d6bcf")
+
+        def on_leavereci(e):
+            reciprocal.configure(bg="#5E4BB6")
+
+        # -------------------------------------------------ROW3
+
+        def on_enterClear(e):
+            Clear.configure(bg="#777777")
+
+        def on_leaveClear(e):
+            Clear.configure(bg="#494949")
+
+        def on_enterpi(e):
+            pi.configure(bg="#777777")
+
+        def on_leavepi(e):
+            pi.configure(bg="#494949")
+
+        def on_enterpm(e):
+            plusminus.configure(bg="#777777")
+
+        def on_leavepm(e):
+            plusminus.configure(bg="#494949")
+
+        def on_enterdivision(e):
+            division.configure(bg="#7d6bcf")
+
+        def on_leavedivision(e):
+            division.configure(bg="#5E4BB6")
+
+        # --------------------------------------------------ROW4
+
+        def on_enter7(e):
+            seven.configure(bg="#777777")
+
+        def on_leave7(e):
+            seven.configure(bg="#404040")
+
+        def on_enter8(e):
+            eight.configure(bg="#777777")
+
+        def on_leave8(e):
+            eight.configure(bg="#404040")
+
+        def on_enter9(e):
+            nine.configure(bg="#777777")
+
+        def on_leave9(e):
+            nine.configure(bg="#404040")
+
+        def on_entermulti(e):
+            multi.configure(bg="#7d6bcf")
+
+        def on_leavemulti(e):
+            multi.configure(bg="#5E4BB6")
+
+        # --------------------------------------------------ROW5
+
+        def on_enter4(e):
+            four.configure(bg="#777777")
+
+        def on_leave4(e):
+            four.configure(bg="#404040")
+
+        def on_enter5(e):
+            five.configure(bg="#777777")
+
+        def on_leave5(e):
+            five.configure(bg="#404040")
+
+        def on_enter6(e):
+            six.configure(bg="#777777")
+
+        def on_leave6(e):
+            six.configure(bg="#404040")
+
+        def on_enterminus(e):
+            minus.configure(bg="#7d6bcf")
+
+        def on_leaveminus(e):
+            minus.configure(bg="#5E4BB6")
+
+        # --------------------------------------------------ROW6
+
+        def on_enter1(e):
+            one.configure(bg="#777777")
+
+        def on_leave1(e):
+            one.configure(bg="#404040")
+
+        def on_enter2(e):
+            two.configure(bg="#777777")
+
+        def on_leave2(e):
+            two.configure(bg="#404040")
+
+        def on_enter3(e):
+            three.configure(bg="#777777")
+
+        def on_leave3(e):
+            three.configure(bg="#404040")
+
+        def on_enterplus(e):
+            plus.configure(bg="#7d6bcf")
+
+        def on_leaveplus(e):
+            plus.configure(bg="#5E4BB6")
+
+        # --------------------------------------------------ROW7
+
+        def on_enterdot(e):
+            dot.configure(bg="#777777")
+
+        def on_leavedot(e):
+            dot.configure(bg="#494949")
+
+        def on_enter0(e):
+            zero.configure(bg="#777777")
+
+        def on_leave0(e):
+            zero.configure(bg="#404040")
+
+        def on_enterdelete(e):
+            delete.configure(bg="#777777")
+
+        def on_leavedelete(e):
+            delete.configure(bg="#494949")
+
+        def on_enterequals(e):
+            equals.configure(bg="#ffd245")
+
+        def on_leaveequals(e):
+            equals.configure(bg="#FEC208")
+
+        # =====================================================
+
         self.displayall = Label(window, width=30, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
                                 font=("Calibri", 16), anchor="se")
         self.displayall.grid(row=0, ipady=14, columnspan=6, rowspan=1, padx=0, pady=0, sticky="W")
@@ -284,6 +449,94 @@ class Calculator:
         equals = Button(window, text="=", width=7, height=2, bg="#FEC208", border=0, fg="black",
                         font=('Helvetica', '14'), command=lambda: obj.equals_function())
         equals.grid(row=7, column=3, padx=2)
+
+        # ====================================Binding==============================================
+        # -------------------------------------------------ROW2
+
+        lbracket.bind('<Enter>', on_enterlb)
+        lbracket.bind('<Leave>', on_leavelb)
+
+        rbracket.bind('<Enter>', on_enterrb)
+        rbracket.bind('<Leave>', on_leaverb)
+
+        sqroot.bind('<Enter>', on_entersqroot)
+        sqroot.bind('<Leave>', on_leavesqroot)
+
+        square.bind('<Enter>', on_entersquare)
+        square.bind('<Leave>', on_leavesquare)
+
+        reciprocal.bind('<Enter>', on_enterreci)
+        reciprocal.bind('<Leave>', on_leavereci)
+
+        # -------------------------------------------------ROW3
+
+        Clear.bind('<Enter>', on_enterClear)
+        Clear.bind('<Leave>', on_leaveClear)
+
+        pi.bind('<Enter>', on_enterpi)
+        pi.bind('<Leave>', on_leavepi)
+
+        plusminus.bind('<Enter>', on_enterpm)
+        plusminus.bind('<Leave>', on_leavepm)
+
+        division.bind('<Enter>', on_enterdivision)
+        division.bind('<Leave>', on_leavedivision)
+
+        # -------------------------------------------------ROW4
+
+        seven.bind('<Enter>', on_enter7)
+        seven.bind('<Leave>', on_leave7)
+
+        eight.bind('<Enter>', on_enter8)
+        eight.bind('<Leave>', on_leave8)
+
+        nine.bind('<Enter>', on_enter9)
+        nine.bind('<Leave>', on_leave9)
+
+        multi.bind('<Enter>', on_entermulti)
+        multi.bind('<Leave>', on_leavemulti)
+
+        # --------------------------------------------------ROW5
+
+        four.bind('<Enter>', on_enter4)
+        four.bind('<Leave>', on_leave4)
+
+        five.bind('<Enter>', on_enter5)
+        five.bind('<Leave>', on_leave5)
+
+        six.bind('<Enter>', on_enter6)
+        six.bind('<Leave>', on_leave6)
+
+        minus.bind('<Enter>', on_enterminus)
+        minus.bind('<Leave>', on_leaveminus)
+
+        # --------------------------------------------------ROW6
+
+        one.bind('<Enter>', on_enter1)
+        one.bind('<Leave>', on_leave1)
+
+        two.bind('<Enter>', on_enter2)
+        two.bind('<Leave>', on_leave2)
+
+        three.bind('<Enter>', on_enter3)
+        three.bind('<Leave>', on_leave3)
+
+        plus.bind('<Enter>', on_enterplus)
+        plus.bind('<Leave>', on_leaveplus)
+
+        # --------------------------------------------------ROW7
+
+        dot.bind('<Enter>', on_enterdot)
+        dot.bind('<Leave>', on_leavedot)
+
+        zero.bind('<Enter>', on_enter0)
+        zero.bind('<Leave>', on_leave0)
+
+        delete.bind('<Enter>', on_enterdelete)
+        delete.bind('<Leave>', on_leavedelete)
+
+        equals.bind('<Enter>', on_enterequals)
+        equals.bind('<Leave>', on_leaveequals)
 
 
 window = tkinter.Tk()
