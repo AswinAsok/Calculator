@@ -5,56 +5,56 @@ Mail   : aswinasokofficial@gmail.com<br>
 ##  Labels
 ---------
 ### Row 0
-1) display_all => To display all th calculations done untill equals or clear key has been pressed<br> textvariable=self.label_value_all.
+1) display_all : To display all th calculations done untill equals or clear key has been pressed<br> textvariable=self.label_value_all.
 
 ### Row 1
-2) display => To display the last entered numeric value<br> textvariable=self.label_value.
+2) display : To display the last entered numeric value<br> textvariable=self.label_value.
 
 ## Buttons<br>
 --------------
 ### Row 2
 
-* left_bracket => add '(' to display_all label.
-* right_bracket => add ')' to display_all label.
-* sqr => To find square root.
-* square => To find square.
-* reciprocal => To find reciprocal.
+* left_bracket : add '(' to display_all label.
+* right_bracket : add ')' to display_all label.
+* sqr : To find square root.
+* square : To find square.
+* reciprocal : To find reciprocal.
 
 ### Row 3
 
-* clear => Clears both the labels.
-* pi => Multiplies the value from display label with '3.14'.
-* plus_minus => Multiplies the value from display label with '-'.
-* division => To Divide.
+* clear : Clears both the labels.
+* pi : Multiplies the value from display label with '3.14'.
+* plus_minus : Multiplies the value from display label with '-'.
+* division : To Divide.
 
 ### Row 4
 
-* seven => To set_text as 7.
-* eight => To set_text as 8.
-* nine => To set_text as 9.
-* multi => To Multiply.
+* seven : To set_text as 7.
+* eight : To set_text as 8.
+* nine : To set_text as 9.
+* multi : To Multiply.
 
 
 ### Row 5
  
-* four => To set_text as 4.
-* five => To set_text as 5.
-* six => To set_text as 6.
-* minus => To Subtract.
+* four : To set_text as 4.
+* five : To set_text as 5.
+* six : To set_text as 6.
+* minus : To Subtract.
 
 ### Row 6
  
-* one => To set_text as 1.
-* two => To set_text as 2.
-* three => To set_text as 3.
-* plus => To Add.
+* one : To set_text as 1.
+* two : To set_text as 2.
+* three : To set_text as 3.
+* plus : To Add.
 
 ### Row 7
  
-* dot => To add to display label '.'.
-* zero => To set_text as 0.
-* delete => To delete thr last character from display label.
-* equals => To calculate the result using eval() .
+* dot : To add to display label '.'.
+* zero : To set_text as 0.
+* delete : To delete thr last character from display label.
+* equals : To calculate the result using eval() .
 
 ## Functions
 ---------
