@@ -77,7 +77,6 @@ class Calculator:
         if self.display_all.cget("text") != "":
             if self.display_all.cget("text")[-1] == ")" and not to_add.isdigit():
                 self.square_root = False
-                print("Working")
 
         if self.display_all.cget("text") != "":
 
@@ -128,8 +127,7 @@ class Calculator:
 
             if self.display_all.cget("text") != to_add and self.display.cget("text") != "0" and self.display.cget(
                     "text") != "" or self.squared:
-                if self.display.cget("text")[-1] == ".":
-                    print("true")
+                if self.display.cget("text") != "" and self.display.cget("text")[-1] == ".":
                     return
                 self.label_value_all.set(self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
                 self.label_value.set("")
