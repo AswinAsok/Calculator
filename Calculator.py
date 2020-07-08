@@ -1,33 +1,33 @@
 import tkinter
 from tkinter import *
-from math import *
 
 
 class Calculator:
 
-    def sqroot(self):
+    def sqr(self):
         if self.display.cget("text") != "0" and self.display.cget("text") != "":
-            self.label_valueall.set(self.displayall.cget("text") + "sqrt(" + str(self.display.cget("text")) + ")")
+            self.label_value_all.set(self.display_all.cget("text") + "sqrt(" + str(self.display.cget("text")) + ")")
             self.label_value.set("")
 
     def square(self):
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
             self.squared = True
-            self.label_valueall.set(
-                self.displayall.cget("text") + str(float(self.display.cget("text")) * float(self.display.cget("text"))))
+            self.label_value_all.set(
+                self.display_all.cget("text") + str(
+                    float(self.display.cget("text")) * float(self.display.cget("text"))))
             self.label_value.set("")
 
     def reciprocal(self):
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
-            self.label_valueall.set(self.displayall.cget("text") + "1/(" + str(self.display.cget("text")) + ")")
+            self.label_value_all.set(self.display_all.cget("text") + "1/(" + str(self.display.cget("text")) + ")")
             self.label_value.set("")
 
     def negate(self):
 
-        if (self.display.cget("text") == "Cannot Divide By Zero"):
+        if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
-        if self.display.cget("text") != "":
+        if self.display.cget("text") != "" and self.display.cget("text") != "0":
             self.label_value.set(str(float(self.display.cget("text")) * -1))
 
     def dot_operator(self):
@@ -36,7 +36,7 @@ class Calculator:
             self.label_value.set("0")
             self.equals_clicked = False
 
-        if (self.display.cget("text") == "Cannot Divide By Zero"):
+        if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
         if str(self.display.cget("text")).count(".") < 1:
@@ -45,10 +45,10 @@ class Calculator:
 
     def delete(self):
 
-        if (self.display.cget("text") == "0"):
+        if self.display.cget("text") == "0":
             return
 
-        if (self.display.cget("text") == "Cannot Divide By Zero"):
+        if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
         if not self.equals_clicked:
@@ -58,103 +58,105 @@ class Calculator:
     def clear(self):
 
         self.label_value.set("0")
-        self.label_valueall.set("")
+        self.label_value_all.set("")
 
     def pi(self):
-        if (self.display.cget("text") == "Cannot Divide By Zero"):
+        if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
-        if (self.display.cget("text") != ""):
+        if self.display.cget("text") != "":
             self.label_value.set(str(float(self.display.cget("text")) * 3.14))
 
-    def set_text(self, toadd):
+    def set_text(self, to_add):
 
-        if self.displayall.cget("text") != "":
+        if self.display_all.cget("text") != "":
 
-            if self.displayall.cget("text")[-1] == ")" and toadd == "(":  # "7-(5+4)(" For Fixing
+            if self.display_all.cget("text")[-1] == ")" and to_add == "(":  # "7-(5+4)(" For Fixing
                 return
 
-            if (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/") and self.displayall.cget("text")[
-                -1] == ")":
-                self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
-            elif self.displayall.cget("text")[-1] == ")" and toadd == ")":
-                count1 = int(str(self.displayall.cget("text")).count("("))
-                count2 = int(str(self.displayall.cget("text")).count(")"))
+            if (to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/") and self.display_all.cget("text")[
+                 -1] == ")":
+                self.label_value_all.set(self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
+            elif self.display_all.cget("text")[-1] == ")" and to_add == ")":
+                count1 = int(str(self.display_all.cget("text")).count("("))
+                count2 = int(str(self.display_all.cget("text")).count(")"))
                 if count2 < count1:
-                    self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
+                    self.label_value_all.set(self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
 
-        if (self.display.cget("text") == "." and self.displayall.cget("text") == ""):
+        if self.display.cget("text") == "." and self.display_all.cget("text") == "":
             return
 
-        if (self.display.cget("text") == "Cannot Divide By Zero"):
+        if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
-        if self.equals_clicked and self.display.cget("text") != "" and toadd.isdigit():
+        if self.equals_clicked and self.display.cget("text") != "" and to_add.isdigit():
             self.label_value.set("")
 
         self.equals_clicked = False
 
-        if not (toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/" or toadd == "(" or toadd == ")"):
+        if not (to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/" or to_add == "(" or to_add == ")"):
             if self.display.cget("text") == "0":
                 self.label_value.set("")
-            self.label_value.set(str(self.display.cget("text")) + toadd)
+            self.label_value.set(str(self.display.cget("text")) + to_add)
 
-        if toadd == "+" or toadd == "-" or toadd == "*" or toadd == "/" or toadd == "(" or toadd == ")":
+        if to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/" or to_add == "(" or to_add == ")":
 
-            if toadd != "(" or toadd != ")":
-                if self.displayall.cget("text") != "" and self.displayall.cget("text")[
-                    -1] == toadd and self.display.cget("text") == "":
+            if to_add != "(" or to_add != ")":
+                if self.display_all.cget("text") != "" and self.display_all.cget("text")[
+                     -1] == to_add and self.display.cget("text") == "":
                     return
 
-            if toadd == "(" or toadd == ")" and self.display.cget("text") == "0" and self.displayall.cget("text") == "":
+            if to_add == "(" or to_add == ")" and self.display.cget("text") == "0" and self.display_all.cget(
+                    "text") == "":
                 self.label_value.set("")
-                if toadd == ")":
-                    if int(str(self.displayall.cget("text")).count("(")) != 0:
-                        self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
-                if toadd == "(":
-                    self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
+                if to_add == ")":
+                    if int(str(self.display_all.cget("text")).count("(")) != 0:
+                        self.label_value_all.set(
+                            self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
+                if to_add == "(":
+                    self.label_value_all.set(self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
 
-            if self.displayall.cget("text") != toadd and self.display.cget("text") != "0" and self.display.cget(
+            if self.display_all.cget("text") != to_add and self.display.cget("text") != "0" and self.display.cget(
                     "text") != "" or self.squared:
                 if self.display.cget("text")[-1] == ".":
                     print("true")
                     return
-                self.label_valueall.set(self.displayall.cget("text") + str(self.display.cget("text")) + toadd)
+                self.label_value_all.set(self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
                 self.label_value.set("")
-                self.last_operand = toadd
+                self.last_operand = to_add
                 self.squared = False
 
-        if self.display.cget("text") == "" and toadd != self.last_operand and self.displayall.cget(
+        if self.display.cget("text") == "" and to_add != self.last_operand and self.display_all.cget(
                 "text") != "" and not self.squared:
-            if self.displayall.cget("text")[-1] != "(" and self.displayall.cget("text")[-1] != ")":
-                self.label_valueall.set(self.displayall.cget("text")[0:-1] + toadd)
-                self.last_operand = toadd
+            if self.display_all.cget("text")[-1] != "(" and self.display_all.cget("text")[-1] != ")":
+                self.label_value_all.set(self.display_all.cget("text")[0:-1] + to_add)
+                self.last_operand = to_add
 
     def equals_function(self):
 
-        count1 = int(str(self.displayall.cget("text")).count("("))
-        count2 = int(str(self.displayall.cget("text")).count(")"))
+        count1 = int(str(self.display_all.cget("text")).count("("))
+        count2 = int(str(self.display_all.cget("text")).count(")"))
         if not count2 == count1:
-            self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
+            self.label_value_all.set(self.display_all.cget("text") + self.display.cget("text"))
             self.label_value.set("")
-            while (count2 < count1):
-                self.label_valueall.set(self.displayall.cget("text") + ")")
+            while count2 < count1:
+                self.label_value_all.set(self.display_all.cget("text") + ")")
                 count2 = count2 + 1
 
-        if self.displayall.cget("text") == "" or self.display.cget("text") == ".":
+        if self.display_all.cget("text") == "" or self.display.cget("text") == ".":
             return
 
         if count1 == count2:
-            if self.displayall.cget("text") != "" and self.displayall.cget("text")[-1].isdigit() or self.display.cget(
-                    "text") != "" or self.displayall.cget("text")[-1] == ")":
+            if self.display_all.cget("text") != "" and self.display_all.cget("text")[-1].isdigit() or self.display.cget(
+                    "text") != "" or self.display_all.cget("text")[-1] == ")":
                 self.equals_clicked = True
-                self.label_valueall.set(self.displayall.cget("text") + self.display.cget("text"))
+                self.label_value_all.set(self.display_all.cget("text") + self.display.cget("text"))
                 try:
-                    self.label_value.set(eval(self.displayall.cget("text")))
+                    self.label_value.set(eval(self.display_all.cget("text")))
                 except ZeroDivisionError:
                     self.label_value.set("Cannot Divide By Zero")
                     self.equals_clicked = False
-                self.label_valueall.set("")
+                self.label_value_all.set("")
 
     def __init__(self, window):
         window.geometry("341x495")
@@ -162,66 +164,66 @@ class Calculator:
         self.equals_clicked = False
         self.squared = False
         self.label_value = StringVar()
-        self.label_valueall = StringVar()
+        self.label_value_all = StringVar()
         self.last_operand = ""
 
         # ============================Bind Functions===========
         # -------------------------------------------------ROW2
 
-        def on_enterlb(e):
-            lbracket.configure(bg="#777777")
+        def on_enter_lb(e):
+            left_bracket.configure(bg="#777777")
 
-        def on_leavelb(e):
-            lbracket.configure(bg="#494949")
+        def on_leave_lb(e):
+            left_bracket.configure(bg="#494949")
 
-        def on_enterrb(e):
-            rbracket.configure(bg="#777777")
+        def on_enter_rb(e):
+            right_bracket.configure(bg="#777777")
 
-        def on_leaverb(e):
-            rbracket.configure(bg="#494949")
+        def on_leave_rb(e):
+            right_bracket.configure(bg="#494949")
 
-        def on_entersqroot(e):
-            sqroot.configure(bg="#777777")
+        def on_enter_sqr(e):
+            sqr.configure(bg="#777777")
 
-        def on_leavesqroot(e):
-            sqroot.configure(bg="#494949")
+        def on_leave_sqr(e):
+            sqr.configure(bg="#494949")
 
-        def on_entersquare(e):
+        def on_enter_square(e):
             square.configure(bg="#777777")
 
-        def on_leavesquare(e):
+        def on_leave_square(e):
             square.configure(bg="#494949")
 
-        def on_enterreci(e):
+        def on_enter_reciprocal(e):
             reciprocal.configure(bg="#7d6bcf")
 
-        def on_leavereci(e):
+        def on_leave_reciprocal(e):
             reciprocal.configure(bg="#5E4BB6")
 
         # -------------------------------------------------ROW3
 
-        def on_enterClear(e):
-            Clear.configure(bg="#777777")
+        def on_enter_clear(e):
+            clear.configure(bg="#777777")
 
-        def on_leaveClear(e):
-            Clear.configure(bg="#494949")
+        def on_leave_clear(e):
+            clear.configure(bg="#494949")
 
-        def on_enterpi(e):
+        def on_enter_pi(e):
             pi.configure(bg="#777777")
 
-        def on_leavepi(e):
+        def on_leave_pi(e):
             pi.configure(bg="#494949")
 
-        def on_enterpm(e):
-            plusminus.configure(bg="#777777")
+        def on_enter_pm(e):
+            plus_minus.configure(bg="#777777")
 
-        def on_leavepm(e):
-            plusminus.configure(bg="#494949")
+        def on_leave_pm(e):
+            plus_minus.configure(bg="#494949")
 
-        def on_enterdivision(e):
+        def on_enter_division(e):
             division.configure(bg="#7d6bcf")
 
-        def on_leavedivision(e):
+        def on_leave_division(e):
             division.configure(bg="#5E4BB6")
 
         # --------------------------------------------------ROW4
@@ -244,10 +246,10 @@ class Calculator:
         def on_leave9(e):
             nine.configure(bg="#404040")
 
-        def on_entermulti(e):
+        def on_enter_multi(e):
             multi.configure(bg="#7d6bcf")
 
-        def on_leavemulti(e):
+        def on_leave_multi(e):
             multi.configure(bg="#5E4BB6")
 
         # --------------------------------------------------ROW5
@@ -270,10 +272,10 @@ class Calculator:
         def on_leave6(e):
             six.configure(bg="#404040")
 
-        def on_enterminus(e):
+        def on_enter_minus(e):
             minus.configure(bg="#7d6bcf")
 
-        def on_leaveminus(e):
+        def on_leave_minus(e):
             minus.configure(bg="#5E4BB6")
 
         # --------------------------------------------------ROW6
@@ -296,18 +298,18 @@ class Calculator:
         def on_leave3(e):
             three.configure(bg="#404040")
 
-        def on_enterplus(e):
+        def on_enter_plus(e):
             plus.configure(bg="#7d6bcf")
 
-        def on_leaveplus(e):
+        def on_leave_plus(e):
             plus.configure(bg="#5E4BB6")
 
         # --------------------------------------------------ROW7
 
-        def on_enterdot(e):
+        def on_enter_dot(e):
             dot.configure(bg="#777777")
 
-        def on_leavedot(e):
+        def on_leave_dot(e):
             dot.configure(bg="#494949")
 
         def on_enter0(e):
@@ -316,23 +318,23 @@ class Calculator:
         def on_leave0(e):
             zero.configure(bg="#404040")
 
-        def on_enterdelete(e):
+        def on_enter_delete(e):
             delete.configure(bg="#777777")
 
-        def on_leavedelete(e):
+        def on_leave_delete(e):
             delete.configure(bg="#494949")
 
-        def on_enterequals(e):
+        def on_enter_equals(e):
             equals.configure(bg="#ffd245")
 
-        def on_leaveequals(e):
+        def on_leave_equals(e):
             equals.configure(bg="#FEC208")
 
         # =====================================================
 
-        self.displayall = Label(window, width=30, bg="#5A5A5A", textvariable=self.label_valueall, fg="white",
-                                font=("Calibri", 16), anchor="se")
-        self.displayall.grid(row=0, ipady=14, columnspan=6, rowspan=1, padx=0, pady=0, sticky="W")
+        self.display_all = Label(window, width=30, bg="#5A5A5A", textvariable=self.label_value_all, fg="white",
+                                 font=("Calibri", 16), anchor="se")
+        self.display_all.grid(row=0, ipady=14, columnspan=6, rowspan=1, padx=0, pady=0, sticky="W")
 
         self.display = Label(window, width=21, bg="#5A5A5A", textvariable=self.label_value, fg="white",
                              font=("Calibri", 24), anchor="e")
@@ -340,17 +342,17 @@ class Calculator:
         self.display.grid(row=1, ipady=16, columnspan=4, rowspan=1, padx=0, pady=0, sticky="W")
         # -------------------------------------------------------------------------------------
 
-        lbracket = Button(window, text="(", width=3, height=2, bg="#494949", fg="white", border=0,
-                          font=('Helvetica', '14'), command=lambda: obj.set_text("("))
-        lbracket.grid(row=2, column=0, pady=1, padx=1, sticky="W")
+        left_bracket = Button(window, text="(", width=3, height=2, bg="#494949", fg="white", border=0,
+                              font=('Helvetica', '14'), command=lambda: obj.set_text("("))
+        left_bracket.grid(row=2, column=0, pady=1, padx=1, sticky="W")
 
-        rbracket = Button(window, text=")", width=3, height=2, bg="#494949", fg="white", border=0,
-                          font=('Helvetica', '14'), command=lambda: obj.set_text(")"))
-        rbracket.grid(row=2, column=0, pady=1, padx=1, stick="E")
+        right_bracket = Button(window, text=")", width=3, height=2, bg="#494949", fg="white", border=0,
+                               font=('Helvetica', '14'), command=lambda: obj.set_text(")"))
+        right_bracket.grid(row=2, column=0, pady=1, padx=1, stick="E")
 
-        sqroot = Button(window, text="√", width=7, height=2, bg="#494949", fg="white", border=0,
-                        font=('Helvetica', '14'), command=lambda: obj.sqroot())
-        sqroot.grid(row=2, column=1)
+        sqr = Button(window, text="√", width=7, height=2, bg="#494949", fg="white", border=0,
+                     font=('Helvetica', '14'), command=lambda: obj.sqr())
+        sqr.grid(row=2, column=1)
 
         square = Button(window, text="x²", width=7, height=2, bg="#494949", fg="white", border=0,
                         relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.square())
@@ -362,17 +364,17 @@ class Calculator:
 
         # -------------------------------------------------------------------------------------
 
-        Clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
+        clear = Button(window, text="C", width=7, height=2, bg="#494949", fg="white", border=0,
                        font=('Helvetica', '14'), command=lambda: obj.clear())
-        Clear.grid(row=3, column=0, pady=1, padx=1)
+        clear.grid(row=3, column=0, pady=1, padx=1)
 
         pi = Button(window, text="π", width=7, height=2, bg="#494949", fg="white", border=0,
                     font=('Helvetica', '14'), command=lambda: obj.pi())
         pi.grid(row=3, column=1)
 
-        plusminus = Button(window, text="+/-", width=7, height=2, bg="#494949", fg="white", border=0,
-                           relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.negate())
-        plusminus.grid(row=3, column=2)
+        plus_minus = Button(window, text="+/-", width=7, height=2, bg="#494949", fg="white", border=0,
+                            relief=GROOVE, font=('Helvetica', '14'), command=lambda: obj.negate())
+        plus_minus.grid(row=3, column=2)
 
         division = Button(window, text="/", width=7, height=2, bg="#5E4BB6", fg="white", border=0,
                           font=('Helvetica', '14'), command=lambda: obj.set_text("/"))
@@ -453,34 +455,34 @@ class Calculator:
         # ====================================Binding==============================================
         # -------------------------------------------------ROW2
 
-        lbracket.bind('<Enter>', on_enterlb)
-        lbracket.bind('<Leave>', on_leavelb)
+        left_bracket.bind('<Enter>', on_enter_lb)
+        left_bracket.bind('<Leave>', on_leave_lb)
 
-        rbracket.bind('<Enter>', on_enterrb)
-        rbracket.bind('<Leave>', on_leaverb)
+        right_bracket.bind('<Enter>', on_enter_rb)
+        right_bracket.bind('<Leave>', on_leave_rb)
 
-        sqroot.bind('<Enter>', on_entersqroot)
-        sqroot.bind('<Leave>', on_leavesqroot)
+        sqr.bind('<Enter>', on_enter_sqr)
+        sqr.bind('<Leave>', on_leave_sqr)
 
-        square.bind('<Enter>', on_entersquare)
-        square.bind('<Leave>', on_leavesquare)
+        square.bind('<Enter>', on_enter_square)
+        square.bind('<Leave>', on_leave_square)
 
-        reciprocal.bind('<Enter>', on_enterreci)
-        reciprocal.bind('<Leave>', on_leavereci)
+        reciprocal.bind('<Enter>', on_enter_reciprocal)
+        reciprocal.bind('<Leave>', on_leave_reciprocal)
 
         # -------------------------------------------------ROW3
 
-        Clear.bind('<Enter>', on_enterClear)
-        Clear.bind('<Leave>', on_leaveClear)
+        clear.bind('<Enter>', on_enter_clear)
+        clear.bind('<Leave>', on_leave_clear)
 
-        pi.bind('<Enter>', on_enterpi)
-        pi.bind('<Leave>', on_leavepi)
+        pi.bind('<Enter>', on_enter_pi)
+        pi.bind('<Leave>', on_leave_pi)
 
-        plusminus.bind('<Enter>', on_enterpm)
-        plusminus.bind('<Leave>', on_leavepm)
+        plus_minus.bind('<Enter>', on_enter_pm)
+        plus_minus.bind('<Leave>', on_leave_pm)
 
-        division.bind('<Enter>', on_enterdivision)
-        division.bind('<Leave>', on_leavedivision)
+        division.bind('<Enter>', on_enter_division)
+        division.bind('<Leave>', on_leave_division)
 
         # -------------------------------------------------ROW4
 
@@ -493,8 +495,8 @@ class Calculator:
         nine.bind('<Enter>', on_enter9)
         nine.bind('<Leave>', on_leave9)
 
-        multi.bind('<Enter>', on_entermulti)
-        multi.bind('<Leave>', on_leavemulti)
+        multi.bind('<Enter>', on_enter_multi)
+        multi.bind('<Leave>', on_leave_multi)
 
         # --------------------------------------------------ROW5
 
@@ -507,8 +509,8 @@ class Calculator:
         six.bind('<Enter>', on_enter6)
         six.bind('<Leave>', on_leave6)
 
-        minus.bind('<Enter>', on_enterminus)
-        minus.bind('<Leave>', on_leaveminus)
+        minus.bind('<Enter>', on_enter_minus)
+        minus.bind('<Leave>', on_leave_minus)
 
         # --------------------------------------------------ROW6
 
@@ -521,27 +523,27 @@ class Calculator:
         three.bind('<Enter>', on_enter3)
         three.bind('<Leave>', on_leave3)
 
-        plus.bind('<Enter>', on_enterplus)
-        plus.bind('<Leave>', on_leaveplus)
+        plus.bind('<Enter>', on_enter_plus)
+        plus.bind('<Leave>', on_leave_plus)
 
         # --------------------------------------------------ROW7
 
-        dot.bind('<Enter>', on_enterdot)
-        dot.bind('<Leave>', on_leavedot)
+        dot.bind('<Enter>', on_enter_dot)
+        dot.bind('<Leave>', on_leave_dot)
 
         zero.bind('<Enter>', on_enter0)
         zero.bind('<Leave>', on_leave0)
 
-        delete.bind('<Enter>', on_enterdelete)
-        delete.bind('<Leave>', on_leavedelete)
+        delete.bind('<Enter>', on_enter_delete)
+        delete.bind('<Leave>', on_leave_delete)
 
-        equals.bind('<Enter>', on_enterequals)
-        equals.bind('<Leave>', on_leaveequals)
+        equals.bind('<Enter>', on_enter_equals)
+        equals.bind('<Leave>', on_leave_equals)
 
 
-window = tkinter.Tk()
-window.resizable(0, 0)
-window.attributes('-alpha', 0.98)
-window.configure(bg="#5A5A5A")
-obj = Calculator(window)
-window.mainloop()
+root = tkinter.Tk()
+root.resizable(0, 0)
+root.attributes('-alpha', 0.98)
+root.configure(bg="#5A5A5A")
+obj = Calculator(root)
+root.mainloop()
