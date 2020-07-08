@@ -1,11 +1,13 @@
 import tkinter
 from tkinter import *
+from math import sqrt
 
 
 class Calculator:
 
     def sqr(self):
         if self.display.cget("text") != "0" and self.display.cget("text") != "":
+            self.square_root = True
             self.label_value_all.set(self.display_all.cget("text") + "sqrt(" + str(self.display.cget("text")) + ")")
             self.label_value.set("")
 
@@ -68,6 +70,14 @@ class Calculator:
             self.label_value.set(str(float(self.display.cget("text")) * 3.14))
 
     def set_text(self, to_add):
+
+        if to_add.isdigit() and self.square_root and self.display_all.cget("text")[-1] == ")":
+            return
+
+        if self.display_all.cget("text") != "":
+            if self.display_all.cget("text")[-1] == ")" and not to_add.isdigit():
+                self.square_root = False
+                print("Working")
 
         if self.display_all.cget("text") != "":
 
@@ -152,7 +162,7 @@ class Calculator:
                 self.equals_clicked = True
                 self.label_value_all.set(self.display_all.cget("text") + self.display.cget("text"))
                 try:
-                    self.label_value.set(eval(self.display_all.cget("text")))
+                    self.label_value.set(eval(str(self.display_all.cget("text"))))
                 except ZeroDivisionError:
                     self.label_value.set("Cannot Divide By Zero")
                     self.equals_clicked = False
@@ -163,6 +173,7 @@ class Calculator:
         window.title("The Hilarious Calculator")
         self.equals_clicked = False
         self.squared = False
+        self.square_root = False
         self.label_value = StringVar()
         self.label_value_all = StringVar()
         self.last_operand = ""
