@@ -71,6 +71,9 @@ class Calculator:
 
     def set_text(self, to_add):
 
+        if to_add == ")" and int(str(self.display_all.cget("text")).count("(")) == 0:
+            return
+
         if to_add.isdigit() and self.square_root and self.display_all.cget("text")[-1] == ")":
             return
 
@@ -127,7 +130,7 @@ class Calculator:
 
             if self.display_all.cget("text") != to_add and self.display.cget("text") != "0" and self.display.cget(
                     "text") != "" or self.squared:
-                if self.display.cget("text") != "" and self.display.cget("text")[-1] == ".":
+                if self.display.cget("text") != "" and str(self.display.cget("text"))[-1] == ".":
                     return
                 self.label_value_all.set(self.display_all.cget("text") + str(self.display.cget("text")) + to_add)
                 self.label_value.set("")
