@@ -31,6 +31,7 @@ class Calculator:
 
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
             self.label_value.set(str(float(self.display.cget("text")) * -1))
+            self.negated = True
 
     def dot_operator(self):
 
@@ -71,11 +72,17 @@ class Calculator:
 
     def set_text(self, to_add):
 
+        if self.negated:
+            if to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/":
+                self.label_value.set("("+self.display.cget("text")+")")
+                self.negated = False
+
         if to_add == ")" and int(str(self.display_all.cget("text")).count("(")) == 0:
             return
 
-        if to_add.isdigit() and self.square_root and self.display_all.cget("text")[-1] == ")":
-            return
+        if self.display_all.cget("text") != "":
+            if to_add.isdigit() and self.square_root and self.display_all.cget("text")[-1] == ")":
+                return
 
         if self.display_all.cget("text") != "":
             if self.display_all.cget("text")[-1] == ")" and not to_add.isdigit():
@@ -175,6 +182,7 @@ class Calculator:
         self.equals_clicked = False
         self.squared = False
         self.square_root = False
+        self.negated = False
         self.label_value = StringVar()
         self.label_value_all = StringVar()
         self.last_operand = ""
