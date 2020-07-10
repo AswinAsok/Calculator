@@ -1,4 +1,11 @@
 # <p align = "center">The Hilarious Calculator</p>
+
+<p align="center">
+  <img src="Images and Video\Calculator.jpg" width="175" >
+</p>
+
+**Note** : This Application was developed on _windows 10_ completely and I would recommend to run this on _windows 10_ as there are chances of errors on changing the operating system.<br><br>
+
 Author : Aswin Asok<br>
 Mail   : aswinasokofficial@gmail.com<br>
 
