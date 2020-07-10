@@ -7,6 +7,9 @@ class Calculator:
 
     def sqr(self):
         if self.display.cget("text") != "0" and self.display.cget("text") != "":
+            if float(self.display.cget("text")) < 0:
+                self.label_value.set("Invalid Input")
+                return
             self.square_root = True
             self.label_value_all.set(self.display_all.cget("text") + "sqrt(" + str(self.display.cget("text")) + ")")
             self.label_value.set("")
@@ -25,7 +28,7 @@ class Calculator:
 
     def negate(self):
 
-        if self.display.cget("text") == "Cannot Divide By Zero":
+        if self.display.cget("text") == "Cannot Divide By Zero" or self.display.cget("text") == "Invalid Input":
             self.clear()
 
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
@@ -38,7 +41,7 @@ class Calculator:
             self.label_value.set("0")
             self.equals_clicked = False
 
-        if self.display.cget("text") == "Cannot Divide By Zero":
+        if self.display.cget("text") == "Cannot Divide By Zero" or self.display.cget("text") == "Invalid Input":
             self.clear()
 
         if self.display.cget("text") != "":
@@ -51,7 +54,7 @@ class Calculator:
         if self.display.cget("text") == "0":
             return
 
-        if self.display.cget("text") == "Cannot Divide By Zero":
+        if self.display.cget("text") == "Cannot Divide By Zero" or self.display.cget("text") == "Invalid Input":
             self.clear()
 
         if not self.equals_clicked:
@@ -69,7 +72,7 @@ class Calculator:
         self.reciprocal_clicked = False
 
     def pi(self):
-        if self.display.cget("text") == "Cannot Divide By Zero":
+        if self.display.cget("text") == "Cannot Divide By Zero" or self.display.cget("text") == "Invalid Input":
             self.clear()
 
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
@@ -88,10 +91,11 @@ class Calculator:
                 self.squared = False
                 self.reciprocal_clicked = False
 
-        if self.negated and self.display.cget("text")[0] == "-":
-            if to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/":
-                self.label_value.set("("+self.display.cget("text")+")")
-                self.negated = False
+        if self.display.cget("text") != "":
+            if self.negated and self.display.cget("text")[0] == "-":
+                if to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/":
+                    self.label_value.set("("+self.display.cget("text")+")")
+                    self.negated = False
 
         if to_add == ")" and int(str(self.display_all.cget("text")).count("(")) == 0:
             return
@@ -121,7 +125,7 @@ class Calculator:
         if self.display.cget("text") == "." and self.display_all.cget("text") == "":
             return
 
-        if self.display.cget("text") == "Cannot Divide By Zero":
+        if self.display.cget("text") == "Cannot Divide By Zero" or self.display.cget("text") == "Invalid Input":
             self.clear()
 
         if self.equals_clicked and self.display.cget("text") != "" and to_add.isdigit():
