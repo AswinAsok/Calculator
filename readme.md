@@ -108,6 +108,7 @@ if the _if:_ conditions are true.
 * label_value_all : To store the string to be displayed at display_all label.
 * last_operand : To store the last operand when a new oprand has been clicked.
 * negated : To check whether "+/-" was clicked or not.
+*reciprocal_clicked : To checked whether reciprocal button was clicked.
 
 
  
