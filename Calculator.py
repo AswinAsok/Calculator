@@ -14,13 +14,12 @@ class Calculator:
     def square(self):
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
             self.squared = True
-            self.label_value_all.set(
-                self.display_all.cget("text") + str(
-                    float(self.display.cget("text")) * float(self.display.cget("text"))))
-            self.label_value.set("")
+            self.label_value.set(
+                    str(float(self.display.cget("text")) * float(self.display.cget("text"))))
 
     def reciprocal(self):
         if self.display.cget("text") != "" and self.display.cget("text") != "0":
+            self.reciprocal_clicked = True
             self.label_value_all.set(self.display_all.cget("text") + "1/(" + str(self.display.cget("text")) + ")")
             self.label_value.set("")
 
@@ -42,9 +41,10 @@ class Calculator:
         if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
-        if str(self.display.cget("text")).count(".") < 1:
-            if str(self.display.cget("text") == "") or str(self.display.cget("text")[-1] != '.'):
-                self.label_value.set(self.display.cget("text") + ".")
+        if self.display.cget("text") != "":
+            if str(self.display.cget("text")).count(".") < 1:
+                if str(self.display.cget("text") == "") or str(self.display.cget("text")[-1] != '.'):
+                    self.label_value.set(self.display.cget("text") + ".")
 
     def delete(self):
 
@@ -62,17 +62,33 @@ class Calculator:
 
         self.label_value.set("0")
         self.label_value_all.set("")
+        self.equals_clicked = False
+        self.squared = False
+        self.square_root = False
+        self.negated = False
+        self.reciprocal_clicked = False
 
     def pi(self):
         if self.display.cget("text") == "Cannot Divide By Zero":
             self.clear()
 
-        if self.display.cget("text") != "":
+        if self.display.cget("text") != "" and self.display.cget("text") != "0":
             self.label_value.set(str(float(self.display.cget("text")) * 3.14))
 
     def set_text(self, to_add):
 
-        if self.negated:
+        if self.squared and to_add.isdigit():
+            self.label_value.set("")
+            self.squared = False
+
+        if self.square_root or self.reciprocal_clicked:
+            if not (to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/"):
+                return
+            else:
+                self.squared = False
+                self.reciprocal_clicked = False
+
+        if self.negated and self.display.cget("text")[0] == "-":
             if to_add == "+" or to_add == "-" or to_add == "*" or to_add == "/":
                 self.label_value.set("("+self.display.cget("text")+")")
                 self.negated = False
@@ -183,6 +199,7 @@ class Calculator:
         self.squared = False
         self.square_root = False
         self.negated = False
+        self.reciprocal_clicked = False
         self.label_value = StringVar()
         self.label_value_all = StringVar()
         self.last_operand = ""
