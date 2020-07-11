@@ -4,7 +4,14 @@
   <img src="Images and Video\Calculator.jpg" width="175" >
 </p>
 
-**Note** : This Application was developed on _windows 10_ completely and I would recommend to run this on _windows 10_ as there are chances of errors on changing the operating system.<br><br>
+------
+
+**Note** : This Project was developed on _windows 10_ completely and I would recommend to run this on _windows 10_ as there are chances of errors on switching the operating system.<br><br>
+
+This Project currently has more than 50 if statements and each one is used to fix the common errors that may occur during the execution of the program.Instead of adding new features my main aim was to remove existing errors and to make the project error free and user friendly as possible.
+
+Special Thanks : [**Crossroads Team**.](https://www.youtube.com/channel/UCoGHeFY7jE2OB_TJS_87MOA)
+
 
 Author : Aswin Asok<br>
 Mail   : aswinasokofficial@gmail.com<br>
@@ -12,10 +19,10 @@ Mail   : aswinasokofficial@gmail.com<br>
 ##  Labels
 ---------
 ### Row 0
-1) display_all : To display all th calculations done untill equals or clear key has been pressed<br> textvariable=self.label_value_all.
+1) display_all : To display all th calculations done untill equals or clear key has been pressed.<br> textvariable=self.label_value_all.
 
 ### Row 1
-2) display : To display the last entered numeric value<br> textvariable=self.label_value.
+2) display : To display the last entered numeric value.<br> textvariable=self.label_value.
 
 ## Buttons<br>
 --------------
@@ -69,7 +76,7 @@ Mail   : aswinasokofficial@gmail.com<br>
 ### def _ _ init _ _();<br>
 * Constructor which has an argument named _**window**_ which recives the parameter _**root**_ pass at the time of object creation.
 <br><br>
-Function : To initalize all the buttons,varibles and labels.
+Function : To initalize all the buttons,variables and labels.
 <br><br>
 Note : The binding functions for hover feature are declared inside the constructor.
 
