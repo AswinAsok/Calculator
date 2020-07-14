@@ -5,73 +5,11 @@
 </p>
 
 ------
-<br>
-<style type="text/css" >
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<table class="tg center" >
-<thead>
-  <tr>
-    <th class="tg-c3ow" colspan="5">Title Bar</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-dvpl" colspan="5">display_all label</td>
-  </tr>
-  <tr>
-    <td class="tg-dvpl" colspan="5">display label</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow">left_<br>bracket<br></td>
-    <td class="tg-0pky">right_<br>bracket</td>
-    <td class="tg-c3ow">sqr</td>
-    <td class="tg-c3ow">square</td>
-    <td class="tg-c3ow">reciprocal</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow" colspan="2">clear</td>
-    <td class="tg-c3ow">pi</td>
-    <td class="tg-c3ow">plus_minus</td>
-    <td class="tg-c3ow">division</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow" colspan="2">seven</td>
-    <td class="tg-c3ow">eight</td>
-    <td class="tg-c3ow">nine</td>
-    <td class="tg-c3ow">multi</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow" colspan="2">four</td>
-    <td class="tg-c3ow">five</td>
-    <td class="tg-c3ow">six</td>
-    <td class="tg-c3ow">minus</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow" colspan="2">one </td>
-    <td class="tg-c3ow">two</td>
-    <td class="tg-c3ow">three</td>
-    <td class="tg-c3ow">plus</td>
-  </tr>
-  <tr>
-    <td class="tg-c3ow" colspan="2">dot</td>
-    <td class="tg-c3ow">zero</td>
-    <td class="tg-c3ow">delete</td>
-    <td class="tg-c3ow">equals</td>
-  </tr>
-</tbody>
-</table><br>
+<p align="center">
+  <img src="Images and Video\Table.jpg" width="300" >
+</p>
+
+-------------------------
 
 **Note** : This Project was developed on _windows 10_ completely and I would recommend to run this on _windows 10_ as there are chances of errors on switching the operating system.<br>
 
