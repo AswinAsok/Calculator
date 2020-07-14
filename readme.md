@@ -1,7 +1,7 @@
 # <p align = "center">The Hilarious Calculator</p>
 
 <p align="center">
-  <img src="Images and Video\Calculator.jpg" width="300" >
+  <img src="Images and Video\Calculator.jpg" width="200" >
 </p>
 
 ------
