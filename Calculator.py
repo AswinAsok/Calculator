@@ -208,7 +208,30 @@ class Calculator:
         self.label_value_all = StringVar()
         self.last_operand = ""
 
-        # ============================Bind Functions===========
+        def keyboard(event):
+            key = event.char
+            if "0" <= key <= "9" or key == ")" or key == "(" or key == "+" or key == "-" or key == "*" or key == "/":
+                obj.set_text(key)
+            elif key == ".":
+                obj.dot_operator()
+            elif key == "p" or key == "P":
+                obj.pi()
+            elif key == "r" or key == "R":
+                obj.reciprocal()
+            elif key == "n" or key == "N":
+                obj.negate()
+            elif key == "s":
+                obj.sqr()
+            elif key == "S":
+                obj.square()
+
+        window.bind('<Key>', lambda a: keyboard(a))
+        window.bind("<Return>", (lambda event: obj.equals_function()))
+        window.bind("<BackSpace>", (lambda event: obj.delete()))
+        window.bind("<Delete>", (lambda event: obj.clear()))
+
+        # ============================Bind Functions==========
+
         # -------------------------------------------------ROW2
 
         def on_enter_lb(e):

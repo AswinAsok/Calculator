@@ -16,6 +16,18 @@ Special Thanks : [**Crossroads Team**.](https://www.youtube.com/channel/UCoGHeFY
 Author : Aswin Asok<br>
 Mail   : aswinasokofficial@gmail.com<br>
 
+## Keyboard Controls
+--------------------
+
+* For Entering Numbers,Brackets and '+' , '-' , '*' , '/' , '.' use Respective Keys.
+* For Finding the Square use Capital 'S'.
+* For Finding the Squareroot use Small 's'.
+* For Finding the reciprocal use either Capital or Small 'R'.
+* For Multiplying the result with '-' use either Capital or Small 'N'.
+* For Multiplying the result with "3.14" use either Capital or Small 'p'.
+* For Clearing the last Entered Character from display label press backspace.
+* For Clearing both labels press Delete Button.
+
 ##  Labels
 ---------
 ### Row 0
@@ -74,11 +86,14 @@ Mail   : aswinasokofficial@gmail.com<br>
 ---------
 
 ### def _ _ init _ _();<br>
-* Constructor which has an argument named _**window**_ which recives the parameter _**root**_ pass at the time of object creation.
+* Constructor which has an argument named _**window**_ which recives the parameter _**root**_ passed at the time of object creation.
 <br><br>
 Function : To initalize all the buttons,variables and labels.
 <br><br>
 Note : The binding functions for hover feature are declared inside the constructor.
+
+### def keyboard():<br>
+* This Function has been declared inside the __constructor__ in order to direct the events from the keys pressed in the keyboard to their respective functions for execution.
 
 ### def set_text ():<br>
 * Takes an argument named _**to_add**_ from each button when they are clicked and stores them in respective labels according the button which was clicked.
