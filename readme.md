@@ -6,7 +6,7 @@
 
 ------
 <p align="center">
-  <img src="Images and Video\Table.jpg" width="300" >
+  <img src="Images and Video\Table.jpg" width="200" >
 </p>
 
 -------------------------
