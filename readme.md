@@ -5,7 +5,7 @@
 </p>
 
 ------
-<p align="center">
+<p align="center"e>
   <img src="Images and Video\Table.jpg" width="200" >
 </p>
 
@@ -32,6 +32,7 @@ Mail   : aswinasokofficial@gmail.com<br>
 * For Multiplying the result with "3.14" use either Capital or Small 'p'.
 * For Clearing the last Entered Character from display label press backspace.
 * For Clearing both labels press Delete Button.
+* For the final result(equals) press the Enter Button.
 
 ##  Labels
 ---------
@@ -97,8 +98,14 @@ Function : To initalize all the buttons,variables and labels.
 <br><br>
 Note : The binding functions for hover feature are declared inside the constructor.
 
-### def keyboard():<br>
+#### def keyboard():<br>
 * This Function has been declared inside the __constructor__ in order to direct the events from the keys pressed in the keyboard to their respective functions for execution.
+
+#### def key_press():<br>
+* This function has been declared inside the __constructor__ and has an argument name event to recieve the event parameter when a key has been pressed and calls corresponding function to change the button color.
+
+#### def key_release():<br>
+* This function has been declared inside the __constructor__ and has an argument name event to recieve the event parameter when a key has been released and calls corresponding function to revert the button color.
 
 ### def set_text ():<br>
 * Takes an argument named _**to_add**_ from each button when they are clicked and stores them in respective labels according the button which was clicked.
