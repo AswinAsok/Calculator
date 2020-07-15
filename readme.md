@@ -98,6 +98,9 @@ Function : To initalize all the buttons,variables and labels.
 <br><br>
 Note : The binding functions for hover feature are declared inside the constructor.
 
+#### def keyboard_ebc():<br>
+* This Function has an argument named check which accepts the character "e" or "b" or "c" when enter,backspace or clear key has been pressed.This Function has been declared inside the __constructor__ .The Purpose of this function is to highlight the key among enter,backspace or clear keys and to to sent them to respective functions for execution.
+
 #### def keyboard():<br>
 * This Function has been declared inside the __constructor__ in order to direct the events from the keys pressed in the keyboard to their respective functions for execution.
 
@@ -150,3 +153,4 @@ if the _if:_ conditions are true.
 * last_operand : To store the last operand when a new oprand has been clicked.
 * negated : To check whether "+/-" was clicked or not.
 * reciprocal_clicked : To checked whether reciprocal button was clicked.
+* check : To Store "e","b" or "c" for checking in the __keyboard_ebc__ function.
