@@ -207,6 +207,19 @@ class Calculator:
         self.label_value = StringVar()
         self.label_value_all = StringVar()
         self.last_operand = ""
+        self.check = ""
+
+        def keyboard_ebc(check):
+            self.check = check
+            if check == "e":
+                on_enter_equals(e=None)
+                obj.equals_function()
+            if check == "b":
+                on_enter_delete(e=None)
+                obj.delete()
+            if check == "c":
+                on_enter_clear(e=None)
+                obj.clear()
 
         def keyboard(event):
             key = event.char
@@ -276,6 +289,12 @@ class Calculator:
                 on_enter_plus(e=None)
 
         def key_release(event):
+            if self.check == "e":
+                on_leave_equals(e=None)
+            elif self.check == "b":
+                on_leave_delete(e=None)
+            elif self.check == "c":
+                on_leave_clear(e=None)
             key = event.char
             if key == "1":
                 on_leave1(e=None)
@@ -324,9 +343,9 @@ class Calculator:
             elif key == "+":
                 on_leave_plus(e=None)
 
-        window.bind("<Return>", lambda event: obj.equals_function())
-        window.bind("<BackSpace>", lambda event: obj.delete())
-        window.bind("<Delete>", lambda event: obj.clear())
+        window.bind("<Return>", lambda event: keyboard_ebc("e"))
+        window.bind("<BackSpace>", lambda event: keyboard_ebc("b"))
+        window.bind("<Delete>", lambda event: keyboard_ebc("c"))
         window.bind('<KeyPress>', lambda a: key_press(a))
         window.bind('<KeyRelease>', lambda a: key_release(a))
 
