@@ -225,10 +225,110 @@ class Calculator:
             elif key == "S":
                 obj.square()
 
-        window.bind('<Key>', lambda a: keyboard(a))
-        window.bind("<Return>", (lambda event: obj.equals_function()))
-        window.bind("<BackSpace>", (lambda event: obj.delete()))
-        window.bind("<Delete>", (lambda event: obj.clear()))
+        def key_press(event):
+            keyboard(event)
+            key = event.char
+            if key == "1":
+                on_enter1(e=None)
+            elif key == "2":
+                on_enter2(e=None)
+            elif key == "3":
+                on_enter3(e=None)
+            elif key == "4":
+                on_enter4(e=None)
+            elif key == "5":
+                on_enter5(e=None)
+            elif key == "6":
+                on_enter6(e=None)
+            elif key == "7":
+                on_enter7(e=None)
+            elif key == "8":
+                on_enter8(e=None)
+            elif key == "9":
+                on_enter9(e=None)
+            elif key == "0":
+                on_enter0(e=None)
+            elif key == ".":
+                on_enter_dot(e=None)
+            elif key == "s":
+                on_enter_sqr(e=None)
+            elif key == "S":
+                on_enter_square(e=None)
+            elif key == "p" or key == "P":
+                on_enter_pi(e=None)
+            elif key == "(":
+                on_enter_lb(e=None)
+            elif key == ")":
+                on_enter_rb(e=None)
+            elif key == "n" or key == "N":
+                on_enter_pm(e=None)
+            elif key == ")":
+                on_enter_rb(e=None)
+            elif key == "r" or key == "R":
+                on_enter_reciprocal(e=None)
+            elif key == "*":
+                on_enter_multi(e=None)
+            elif key == "/":
+                on_enter_division(e=None)
+            elif key == "-":
+                on_enter_minus(e=None)
+            elif key == "+":
+                on_enter_plus(e=None)
+
+        def key_release(event):
+            key = event.char
+            if key == "1":
+                on_leave1(e=None)
+            elif key == "2":
+                on_leave2(e=None)
+            elif key == "3":
+                on_leave3(e=None)
+            elif key == "4":
+                on_leave4(e=None)
+            elif key == "5":
+                on_leave5(e=None)
+            elif key == "6":
+                on_leave6(e=None)
+            elif key == "7":
+                on_leave7(e=None)
+            elif key == "8":
+                on_leave8(e=None)
+            elif key == "9":
+                on_leave9(e=None)
+            elif key == "0":
+                on_leave0(e=None)
+            elif key == ".":
+                on_leave_dot(e=None)
+            elif key == "s":
+                on_leave_sqr(e=None)
+            elif key == "S":
+                on_leave_square(e=None)
+            elif key == "p" or key == "P":
+                on_leave_pi(e=None)
+            elif key == "(":
+                on_leave_lb(e=None)
+            elif key == ")":
+                on_leave_rb(e=None)
+            elif key == "n" or key == "N":
+                on_leave_pm(e=None)
+            elif key == ")":
+                on_leave_rb(e=None)
+            elif key == "r" or key == "R":
+                on_leave_reciprocal(e=None)
+            elif key == "*":
+                on_leave_multi(e=None)
+            elif key == "/":
+                on_leave_division(e=None)
+            elif key == "-":
+                on_leave_minus(e=None)
+            elif key == "+":
+                on_leave_plus(e=None)
+
+        window.bind("<Return>", lambda event: obj.equals_function())
+        window.bind("<BackSpace>", lambda event: obj.delete())
+        window.bind("<Delete>", lambda event: obj.clear())
+        window.bind('<KeyPress>', lambda a: key_press(a))
+        window.bind('<KeyRelease>', lambda a: key_release(a))
 
         # ============================Bind Functions==========
 
